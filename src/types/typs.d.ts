@@ -1,10 +1,4 @@
 
-
-type InputProps = {
-    placeholder: string
-    type?: string
-}
-
 type ModalProps = {
     title: string
     children: React.ReactNode
