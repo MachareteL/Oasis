@@ -23,39 +23,39 @@ export const theme = {
         550: "#656A6F",
         950: "#101112",
       },
-      bosch_blue: {
+      "bosch-blue": {
         50: "#E8F1FF",
         250: "#7EBDFF",
         500: "#007BC0",
         750: "#003E64",
       },
-      bosch_blue_green: {
+      "bosch-blue-green": {
         50: "#DEF5F3",
         250: "#79C5C0",
         500: "#18837E",
         750: "#07423F",
       },
-      bosch_green: {
+      "bosch-green": {
         50: "#E2F5E7",
         250: "#E2F5E7",
-        7: "#4AB073",
+        350: "#4AB073",
         500: "#00884A",
         750: "#004523",
       },
-      bosch_yellow: {
+      "bosch-yellow": {
         50: "#FFEFD1",
         250: "#DEB300",
         500: "#8F7300",
         750: "#493900",
       },
-      bosch_red: {
+      "bosch-red": {
         50: "#FFECEC",
         250: "#FF9D9D",
         500: "#ED0007",
-        750: "#BE0004",
-        15: "#7D0002",
+        600: "#BE0004",
+        750: "#7D0002",
       },
-      bosch_purple: {
+      "bosch-purple": {
         50: "#F7EEF6",
         250: "#E5A2DF",
         500: "#C535BC",
