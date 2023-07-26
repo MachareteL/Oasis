@@ -5,19 +5,27 @@ import { NextPage } from "next";
 
 interface Props {}
 
-const Login: NextPage<Props> = ({}) => {
+const Register: NextPage<Props> = ({}) => {
   return (
     <>
       <div className="container m-auto flex max-w-xl flex-col space-y-4 rounded-2xl border-2 p-8">
         <text className="text-lg font-bold text-bosch-gray-800 sm:text-2xl">
-          Log in
+          Register
         </text>
         <h1 className="h-0.5 bg-bosch-gray-100"></h1>
         <form className="space-y-6">
           <div className="flex flex-col space-y-1 text-bosch-gray-850">
-            <label>User:</label>
+            <label>Name:</label>
             <Input
-              placeholder="User..."
+              placeholder="Name..."
+              maxLength={20}
+              className="h-8 sm:h-10"
+            />
+          </div>
+          <div className="flex flex-col space-y-1 text-bosch-gray-850">
+            <label>E-mail:</label>
+            <Input
+              placeholder="E-mail..."
               maxLength={20}
               className="h-8 sm:h-10"
             />
@@ -40,4 +48,4 @@ const Login: NextPage<Props> = ({}) => {
   );
 };
 
-export default Login;
+export default Register;

@@ -11,7 +11,7 @@ export default function Input({
   return (
     <input
       type={type}
-      className={`border-bosch-gray-250 placeholder:border-bosch-gray-250 outline-bosch-gray-550 rounded-md border-2 px-1 pl-2 ${className}`}
+      className={`border-bosch-gray-250 placeholder:border-bosch-gray-250 outline-bosch-gray-400 rounded-md border-2 px-1 pl-2 ${className}`}
       placeholder={placeholder}
       value={value}
       onChange={onChange}
