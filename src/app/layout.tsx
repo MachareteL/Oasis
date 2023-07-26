@@ -2,6 +2,7 @@ import { BoschSansRegular } from "@/fonts/fonts";
 import "./globals.css";
 import type { Metadata } from "next";
 import { NextAuthProvider } from "./providers/providers";
+import Header from "@/components/Header";
 
 export const metadata: Metadata = {
   title: "Oasis",
@@ -16,7 +17,9 @@ export default function RootLayout({
   return (
     <html lang="pt-br">
       <NextAuthProvider>
-        <body className={BoschSansRegular.className}>{children}</body>
+        <body className={BoschSansRegular.className}>
+        <Header />
+          {children}</body>
       </NextAuthProvider>
     </html>
   );
