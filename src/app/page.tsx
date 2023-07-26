@@ -4,10 +4,10 @@ import { Modal } from "@/components/Modal";
 export default function Home() {
   return (
     <>
-      <div className="bg-bosch_purple-10 h-screen">
-        <Modal title="aaaa" >
+      <div className="bg-bosch-gray-550 h-screen">
+        <Modal title="Title Here" >
           <>
-          aaaaa
+          Body Here
           </>
         </Modal>
         <Button className="bg-bosch_green-7">Confirm</Button>
