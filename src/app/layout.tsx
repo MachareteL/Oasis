@@ -18,8 +18,9 @@ export default function RootLayout({
     <html lang="pt-br">
       <NextAuthProvider>
         <body className={BoschSansRegular.className}>
-        <Header />
-          {children}</body>
+          <Header />
+          {children}
+        </body>
       </NextAuthProvider>
     </html>
   );
