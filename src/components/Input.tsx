@@ -61,8 +61,8 @@ export default function Input({
         id="outlined-basic"
         label={placeholder}
         variant="outlined"
-        InputLabelProps={{ className: `text-white ${className}`}}
-        color="primary"
+        InputLabelProps={{ className: `text-white` }}
+        inputProps={{ className: `text-white` }}
         size="small"
         className="w-full"
       />
