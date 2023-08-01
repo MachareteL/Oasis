@@ -14,44 +14,32 @@ const Login: NextPage<Props> = ({}) => {
     console.log(user);
   }
   return (
-    <div className="h-full w-full absolute top-0 flex items-center">
-      <div className="container m-auto flex max-w-xl flex-col space-y-4 rounded-2xl border-2 p-8">
-        <text className="text-lg font-bold text-bosch-gray-800 dark:text-bosch-white sm:text-2xl">
-          Log in
-        </text>
-        <h1 className="h-0.5 bg-bosch-gray-100"></h1>
-        <form className="space-y-6" action={handleLogin}>
-          <div className="flex flex-col space-y-1 text-bosch-gray-850 dark:text-bosch-white">
-            <label>User:</label>
-            <Input
-              placeholder="User..."
-              maxLength={20}
-              className="h-8 sm:h-10"
-              name="email"
-            />
-          </div>
-          <div className="flex flex-col space-y-1 text-bosch-gray-850 dark:text-bosch-white">
-            <label>Password:</label>
-            <Input
-              placeholder="Password..."
-              className="h-8 sm:h-10"
-              name="password"
-            />
-          </div>
-          <div className="flex justify-between">
-            <Button className="border border-bosch-gray-100 text-bosch-gray-800 hover:bg-bosch-gray-100 dark:text-bosch-white dark:hover:text-bosch-gray-800">
-              Cancel
-            </Button>
-            <Button
-              className="bg-bosch-green-350 text-bosch-white hover:bg-bosch-green-500"
-              type="submit"
-            >
-              Log In
-            </Button>
-          </div>
-        </form>
+    <div className="absolute top-0 flex h-full w-full items-center justify-center">
+    <div className="container m-5 flex max-w-xl flex-col space-y-12 rounded-2xl border-2 bg-bosch-gray-800 border-bosch-gray-100 dark:border-bosch-gray-600 p-8 dark:border">
+      <div className="space-y-4">
+        <h1 className="text-xl font-bold text-bosch-gray-600 dark:text-bosch-white sm:text-2xl">
+          Log In
+        </h1>
+        <h1 className="h-[1px] bg-bosch-gray-150 dark:bg-bosch-gray-500"></h1>
       </div>
+
+      <form className="space-y-12" action={handleLogin}>
+        <div className="space-y-8 px-5">
+          <Input placeholder="E-mail" maxLength={20} />
+          <Input placeholder="Password" />
+        </div>
+
+        <div className="flex justify-end">
+          <Button
+            className="bg-bosch-blue-500 text-bosch-white hover:bg-bosch-blue-750 mr-5"
+            type="submit"
+          >
+            Enter
+          </Button>
+        </div>
+      </form>
     </div>
+  </div>
   );
 };
 
