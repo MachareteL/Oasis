@@ -14,8 +14,8 @@ const Login: NextPage<Props> = ({}) => {
     console.log(user);
   }
   return (
-    <div className="h-full w-full bg-red-500 absolute">
-      <div className="container m-auto flex max-w-xl flex-col space-y-4 rounded-2xl border-2 bg-pink-700 p-8">
+    <div className="h-full w-full absolute top-0 flex items-center">
+      <div className="container m-auto flex max-w-xl flex-col space-y-4 rounded-2xl border-2 p-8">
         <text className="text-lg font-bold text-bosch-gray-800 dark:text-bosch-white sm:text-2xl">
           Log in
         </text>

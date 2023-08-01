@@ -7,9 +7,9 @@ interface Props {}
 
 const Register: NextPage<Props> = ({}) => {
   return (
-    <>
-      <div className="container m-auto flex max-w-xl flex-col space-y-4 p-8 rounded-2xl border-2 dark:border border-bosch-gray-100 dark:bg-bosch-gray-750">
-        <text className="text-lg font-bold text-bosch-gray-800 dark:text-bosch-white sm:text-2xl">
+    <div className="h-full w-full absolute top-0 flex items-center">
+      <div className=" p-8 m-auto container max-w-xl flex flex-col space-y-4 rounded-2xl border-2 dark:border border-bosch-gray-100 ">
+        <text className="text-xl font-bold text-bosch-gray-800 dark:text-bosch-white sm:text-2xl">
           Register
         </text>
         <h1 className="h-0.5 bg-bosch-gray-100"></h1>
@@ -44,7 +44,7 @@ const Register: NextPage<Props> = ({}) => {
           </div>
         </form>
       </div>
-    </>
+    </div>
   );
 };
 
