@@ -7,10 +7,10 @@ export const authOptions: NextAuthOptions = {
   session: {
     strategy: "jwt",
   },
-  secret: process.env.AUTH_SECRET,
+  secret: 'process.env.AUTH_SECRET',
   providers: [
     CredentialsProvider({
-      name: "Sign in",
+      // name: "Sign in",
       credentials: {
         email: {
           label: "Email",
@@ -20,6 +20,8 @@ export const authOptions: NextAuthOptions = {
         password: { label: "Password", type: "password" },
       },
       async authorize(credentials) {
+        console.log(credentials);
+        
         const user = { id: "1", name: "Admin", email: "admin@admin.com" };
         return user;
       },
