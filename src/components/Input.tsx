@@ -1,8 +1,11 @@
 "use client";
 import { TextField, styled } from "@mui/material";
 import React, { DetailedHTMLProps, InputHTMLAttributes } from "react";
+let theme;
 
-const theme = window.matchMedia("(prefers-color-scheme: dark)").matches;
+if (typeof window !== "undefined") {
+  theme = window.matchMedia("(prefers-color-scheme: dark)").matches;
+}
 console.log(theme);
 
 const TextInput = styled(TextField)(
@@ -62,9 +65,9 @@ export default function Input({
         label={placeholder}
         variant="outlined"
         InputLabelProps={{ className: `text-white` }}
-        inputProps={{ className: `text-white` }}
-        size="small"
+        inputProps={{ className: `text-white`, ...attr }}
         className="w-full"
+        size="small"
       />
     </>
   );
