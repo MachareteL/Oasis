@@ -3,18 +3,19 @@ import Button from "@/components/Button";
 import Input from "@/components/Input";
 import { NextPage } from "next";
 import { signIn, useSession } from "next-auth/react";
+import { useState } from "react";
 
 interface Props {}
 
 const Login: NextPage<Props> = ({}) => {
   const { data, status } = useSession();
-  console.log(data);
-  
+  console.log(data, status);
+  const [user, setUser] = useState({ email: "", password: "" });
   async function handleLogin(event: React.FormEvent) {
     event.preventDefault();
     await signIn("credentials", {
-      email: "teste",
-      password: "teste123",
+      email: user.email,
+      password: user.password,
     });
   }
   return (
@@ -34,8 +35,23 @@ const Login: NextPage<Props> = ({}) => {
           }}
         >
           <div className="space-y-8 px-5">
-            <Input placeholder="E-mail" maxLength={20} name="email" />
-            <Input placeholder="Password" name="password" />
+            <Input
+              placeholder="E-mail"
+              // maxLength={20}
+              name="email"
+              onChange={(e) => {
+                console.log(user.email);
+                setUser({ ...user, email: e.target.value });
+              }}
+            />
+            <Input
+              placeholder="Password"
+              name="password"
+              onChange={(e) => {
+                console.log(user.password);
+                setUser({ ...user, password: e.target.value });
+              }}
+            />
           </div>
 
           <div className="flex justify-end">

@@ -4,12 +4,28 @@ import { NextPage } from "next";
 import Image from "next/image";
 import boschSuperGraph from "../../../../public/BOSCH.svg";
 import { signIn, useSession } from "next-auth/react";
+import prisma from "@/lib/prisma";
 
 interface Props {}
 
 const Register: NextPage<Props> = ({}) => {
-  function handleRegister(){
-    
+  async function handleRegister(formdata: FormData) {
+    "use server";
+    const name = formdata.get("name")?.toString();
+    const email = formdata.get("email")?.toString();
+    const password = formdata.get("password")?.toString();
+    const confirmPassword = formdata.get("confirmPassword")?.toString();
+    if (!name || !email || !password || !confirmPassword) {
+      return;
+    }
+    const user = await prisma.user.create({
+      data: {
+        email,
+        password,
+        name,
+      },
+    });
+    console.log(user);
   }
   return (
     <section className="relative h-screen text-gray-600">
@@ -17,7 +33,7 @@ const Register: NextPage<Props> = ({}) => {
         <Image
           src={boschSuperGraph}
           alt=""
-          className="object-cover h-full w-full opacity-75"
+          className="h-full w-full object-cover opacity-75"
         />
       </div>
       <div className="container mx-auto flex h-full items-center px-5">
@@ -29,12 +45,12 @@ const Register: NextPage<Props> = ({}) => {
             <h1 className="h-[1px] bg-bosch-gray-150 dark:bg-bosch-gray-500"></h1>
           </div>
 
-          <form className="space-y-12">
+          <form className="space-y-12" action={handleRegister}>
             <div className="space-y-8 px-5">
-              <Input placeholder="Name" className="text-white"/>
-              <Input placeholder="E-mail" />
-              <Input placeholder="Password" />
-              <Input placeholder="Confirm Password" />
+              <Input placeholder="Name" className="text-white" name="name" />
+              <Input placeholder="E-mail" name="email" />
+              <Input placeholder="Password" name="password" />
+              <Input placeholder="Confirm Password" name="confirmPassword" />
             </div>
 
             <div className="flex justify-end">

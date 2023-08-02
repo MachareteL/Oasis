@@ -62,6 +62,7 @@ export default function Input({
       <TextInput
         id="outlined-basic"
         label={placeholder}
+        onChange={onChange}
         variant="outlined"
         InputLabelProps={{ className: `text-white` }}
         inputProps={{ className: `text-white`, ...attr }}
