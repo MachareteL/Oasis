@@ -3,10 +3,14 @@ import Input from "@/components/Input";
 import { NextPage } from "next";
 import Image from "next/image";
 import boschSuperGraph from "../../../../public/BOSCH.svg";
+import { signIn, useSession } from "next-auth/react";
 
 interface Props {}
 
 const Register: NextPage<Props> = ({}) => {
+  function handleRegister(){
+    
+  }
   return (
     <section className="relative h-screen text-gray-600">
       <div className="absolute inset-0 bg-gray-900">
@@ -17,7 +21,7 @@ const Register: NextPage<Props> = ({}) => {
         />
       </div>
       <div className="container mx-auto flex h-full items-center px-5">
-        <div className="z-10 flex h-fit w-full flex-col space-y-4 rounded-2xl border-2 border-bosch-gray-100 bg-bosch-gray-900 p-8 dark:border dark:border-bosch-gray-600 md:ml-auto md:mt-0 md:w-1/2 lg:w-1/3">
+        <div className="z-10 flex h-fit w-full flex-col space-y-4 rounded-2xl border-2 border-bosch-gray-100 bg-bosch-gray-800 p-8 dark:border dark:border-bosch-gray-600 md:ml-auto md:mt-0 md:w-1/2 lg:w-1/3">
           <div className="space-y-4">
             <h1 className="text-xl font-bold text-bosch-gray-600 dark:text-bosch-white sm:text-2xl">
               Register

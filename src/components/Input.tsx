@@ -6,7 +6,6 @@ let theme;
 if (typeof window !== "undefined") {
   theme = window.matchMedia("(prefers-color-scheme: dark)").matches;
 }
-console.log(theme);
 
 const TextInput = styled(TextField)(
   theme

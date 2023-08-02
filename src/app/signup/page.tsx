@@ -2,16 +2,19 @@
 import Button from "@/components/Button";
 import Input from "@/components/Input";
 import { NextPage } from "next";
-import { signIn, signOut } from "next-auth/react";
+import { signIn, useSession } from "next-auth/react";
 
 interface Props {}
 
 const Login: NextPage<Props> = ({}) => {
+  const { data, status } = useSession();
+  console.log(data);
+  
   async function handleLogin(event: React.FormEvent) {
     event.preventDefault();
     await signIn("credentials", {
       email: "teste",
-      password: 'teste123'
+      password: "teste123",
     });
   }
   return (
