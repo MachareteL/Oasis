@@ -29,31 +29,32 @@ const Login: NextPage<Props> = ({}) => {
           className="h-full w-full object-cover opacity-70"
         />
       </div>
-      <div className="container mx-auto flex h-full items-center px-5">
-        <div className="z-10 flex h-fit w-full flex-col space-y-4 rounded-2xl p-8 md:ml-auto md:mt-0 md:w-1/2 lg:w-1/3 bg-bosch-white dark:bg-bosch-dark-gray-400">
-          <div className="space-y-4">
-            <h1 className="text-xl font-bold dark:text-bosch-white sm:text-2xl">
-              Sign Up
-            </h1>
-            <h1 className="h-[1px] bg-bosch-gray-150 dark:bg-bosch-gray-500"></h1>
-          </div>
+      <div className="container mx-auto flex flex-col items-center justify-center space-y-2 h-full px-5">
+        <div className="z-10 flex h-fit w-full flex-col space-y-4 rounded-2xl p-20 md:ml-auto md:mt-0 md:w-1/2 lg:w-2/4 xl:w-5/12 bg-bosch-white dark:bg-bosch-dark-gray-400">
+              <h1 className="text-xl font-thin dark:text-bosch-white sm:text-2xl flex justify-center">
+                Sign Up
+              </h1>
 
           <form className="space-y-12"
           onSubmit={(event) => {handleLogin(event)}}>
-            <div className="space-y-8 px-5">
+            <div className="space-y-8">
               <Input placeholder="E-mail" name="email" />
               <Input placeholder="Password" name="password" />
             </div>
 
             <div className="flex justify-end">
               <Button
-                className="mr-5 text-bosch-white bg-oas"
+                className=" text-bosch-white bg-oasis-aqua-400 hover:bg-oasis-aqua-500"
                 type="submit"
               >
                 Create an Account
               </Button>
             </div>
           </form>
+        </div>
+        <div className="z-10 py-10 flex w-full rounded-2xl justify-center md:ml-auto md:mt-0 md:w-1/2 lg:w-2/4 xl:w-5/12 bg-bosch-white dark:bg-bosch-dark-gray-400 space-x-2">
+            <h1>Don't have an account?</h1>
+            <button className="text-oasis-aqua-400">Create one</button>
         </div>
       </div>
     </section>
