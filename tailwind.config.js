@@ -14,65 +14,59 @@ export const theme = {
     colors: {
       bosch: {
         white: "#FFFFFF",
+        black: '#101112',
+        'light-gray-100': '#EFF1F2', //user text in chat
+        'light-gray-200': '#E0E2E5', //borders and lines
+        'light-gray-300': '#71767C', //deselected and texts
+        'light-gray-400': '#1A1C1D', //text
+
+        'dark-gray-': '#EFF1F2', //text
+        'dark-gray-': '#A4ABB3', //deselected inputs and subtitles
+        'dark-gray-': '#656A6F', //borders, lines and texts
+        'dark-gray-': '#2E3033', //background and blackout modal
+        'dark-gray-': '#232628', //background modal
+
       },
-      "bosch-gray": {
-        50: "#EFF1F2",
-        100: "#E0E2E5",
-        150: "#D0D4D8", 
-        200: "#C1C7CC", 
-        250: "#B2B9C0",
-        300: "#A4ABB3",
-        350: "#979EA4",
-        400: "#8A9097",
-        450: "#7D8389",
-        500: "#71767C",
-        550: "#656A6F",
-        600: "#595E62",
-        650: "#4E5256",
-        700: "#43464A",
-        750: "#383B3E",
-        800: "#2E3033",
-        850: "#232628",
-        900: "#1A1C1D",
-        950: "#101112",
+      'oasis-standard':{
+        'aqua-400': '#18837E',
+        'aqua-300': '#419E98',
+        'aqua-purple-100': '#427595',
+        'aqua-purple-200': '#435C92',
+        'purple-600': '#433E8F',
+
+        100: '#18837E', //oasis-aqua-400
+        200: '#419E98', //oasis-aqua-300
+        300: '#427595', //aqua-to-purple-100
+        400: '#435C92', //aqua-to-purple-200
+        500: '#433E8F', //oasis-purple-600
+
+
       },
-      "bosch-blue": {
-        50: "#E8F1FF",
-        250: "#7EBDFF",
-        500: "#007BC0",
-        750: "#003E64",
+      'oasis-aqua':{
+        100: '#8DD2CD',
+        200: '#66B8B2',
+        300: '#419E98',
+        400: '#18837E',
+        500: '#116864',
+        600: '#0A4F4B',
       },
-      "bosch-blue-green": {
-        50: "#DEF5F3",
-        250: "#79C5C0",
-        500: "#18837E",
-        750: "#07423F",
+      'oasis-purple':{
+        100: '#BDC2DE',
+        200: '#A2A5CC',
+        300: '#8889BC',
+        400: '#6E6DAB',
+        500: '#55519B',
+        600: '#433E8F',
+        
       },
-      "bosch-green": {
-        50: "#E2F5E7",
-        250: "#E2F5E7",
-        350: "#4AB073",
-        500: "#00884A",
-        750: "#004523",
-      },
-      "bosch-yellow": {
-        50: "#FFEFD1",
-        250: "#DEB300",
-        500: "#8F7300",
-        750: "#493900",
-      },
-      "bosch-red": {
-        50: "#FFECEC",
-        250: "#FF9D9D",
-        500: "#ED0007",
-        600: "#BE0004",
-        750: "#7D0002",
-      },
-      "bosch-purple": {
-        50: "#F7EEF6",
-        250: "#E5A2DF",
-        500: "#C535BC",
-        750: "#671761",
+      'oasis-blue':{
+        100: '#56B0FF',
+        200: '#0096E8',
+        300: '#007BC0',
+        400: '#00629A',
+        500: '#004975',
+        600: '#004975',
+        
       },
     },
   },
