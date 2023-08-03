@@ -8,8 +8,9 @@ import Link from "next/link";
 
 export default function Header() {
   const pathname = usePathname();
-  if (pathname != "/signup") {
+  if (pathname == "/signup" || pathname == '/signup/register') {
     return <></>;
+    // commit pls
   }
   return (
     <div>

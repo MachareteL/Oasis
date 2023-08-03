@@ -33,7 +33,7 @@ const Login: NextPage<Props> = ({}) => {
         <div className="z-10 flex h-fit w-full flex-col space-y-4 rounded-2xl border-2 border-bosch-gray-100 bg-bosch-gray-800 p-8 dark:border dark:border-bosch-gray-600 md:ml-auto md:mt-0 md:w-1/2 lg:w-1/3">
           <div className="space-y-4">
             <h1 className="text-xl font-bold text-bosch-gray-600 dark:text-bosch-white sm:text-2xl">
-              Register
+              Sign Up
             </h1>
             <h1 className="h-[1px] bg-bosch-gray-150 dark:bg-bosch-gray-500"></h1>
           </div>
