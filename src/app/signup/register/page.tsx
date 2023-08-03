@@ -5,6 +5,8 @@ import Image from "next/image";
 import boschSuperGraph from "../../../../public/BOSCH.svg";
 import { signIn, useSession } from "next-auth/react";
 import prisma from "@/lib/prisma";
+import Link from "next/link";
+import { BoschSansBold } from "@/fonts/fonts";
 
 interface Props {}
 
@@ -36,26 +38,42 @@ const Register: NextPage<Props> = ({}) => {
           className="h-full w-full object-cover opacity-75"
         />
       </div>
-      <div className="container mx-auto flex h-full items-center px-5">
-        <div className="z-10 flex h-fit w-full flex-col space-y-4 rounded-2xl border-2 border-bosch-gray-100 bg-bosch-gray-800 p-8 dark:border dark:border-bosch-gray-600 md:ml-auto md:mt-0 md:w-1/2 lg:w-1/3">
-          <div className="space-y-4">
-            <h1 className="text-xl font-bold text-bosch-gray-600 dark:text-bosch-white sm:text-2xl">
-              Register
-            </h1>
-            <h1 className="h-[1px] bg-bosch-gray-150 dark:bg-bosch-gray-500"></h1>
+      <div className="container mx-auto flex h-full items-center">
+        <div className="z-10 flex h-fit w-full flex-col space-y-4 rounded-2xl border-2 border-bosch-gray-100 bg-bosch-gray-800 p-24 dark:border dark:border-bosch-gray-600 md:ml-auto md:w-2/3 lg:w-2/4 xl:w-5/12">
+          <div className="flex flex-col py-4">
+            <span className={`flex justify-center ${BoschSansBold.className}`}>
+              <h1 className="text-4xl font-extrabold text-bosch-gray-600 dark:text-bosch-white ">
+                BOSCH
+              </h1>
+              <h1 className="text-4xl font-bold text-bosch-gray-600 dark:text-transparent dark:bg-gradient-to-r ">
+                OASIS
+              </h1>
+            </span>
+            <h1 className="text-center text-bosch-white text-xl">Register</h1>
           </div>
-
           <form className="space-y-12" action={handleRegister}>
-            <div className="space-y-8 px-5">
-              <Input placeholder="Name" className="text-white" name="name" />
-              <Input placeholder="E-mail" name="email" />
-              <Input placeholder="Password" name="password" />
-              <Input placeholder="Confirm Password" name="confirmPassword" />
+            <div className="space-y-4">
+              <div>
+                <Input placeholder="Name" className="text-white" name="name" />
+              </div>
+              <div>
+                <Input placeholder="E-mail" name="email" />
+              </div>
+              <div>
+                <Input placeholder="Password" name="password" />
+              </div>
+              <div>
+                <Input placeholder="Confirm Password" name="confirmPassword" />
+                <span className="flex justify-end text-bosch-white">
+                  <p>Already have an account?</p>
+                  <Link href={"/signup"}>Sign In</Link>
+                </span>
+              </div>
             </div>
 
             <div className="flex justify-end">
               <Button
-                className="mr-5 bg-bosch-blue-500 text-bosch-white hover:bg-bosch-blue-750"
+                className="bg-bosch-blue-500 text-bosch-white hover:bg-bosch-blue-750"
                 type="submit"
               >
                 Create an Account
