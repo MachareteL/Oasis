@@ -20,11 +20,11 @@ export const theme = {
         'light-gray-300': '#71767C', //deselected and texts
         'light-gray-400': '#1A1C1D', //text
 
-        'dark-gray-': '#EFF1F2', //text
-        'dark-gray-': '#A4ABB3', //deselected inputs and subtitles
-        'dark-gray-': '#656A6F', //borders, lines and texts
-        'dark-gray-': '#2E3033', //background and blackout modal
-        'dark-gray-': '#232628', //background modal
+        'dark-gray-100': '#EFF1F2', //text
+        'dark-gray-200': '#A4ABB3', //deselected inputs and subtitles
+        'dark-gray-300': '#656A6F', //borders, lines and texts
+        'dark-gray-400': '#2E3033', //background and blackout modal
+        'dark-gray-500': '#232628', //background modal
 
       },
       'oasis-standard':{
