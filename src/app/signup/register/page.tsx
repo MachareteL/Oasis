@@ -6,7 +6,7 @@ import boschSuperGraph from "../../../../public/BOSCH.svg";
 import { signIn, useSession } from "next-auth/react";
 import prisma from "@/lib/prisma";
 import Link from "next/link";
-import { BoschSansBold } from "@/fonts/fonts";
+import Oasis from "@/components/Oasis";
 
 interface Props {}
 
@@ -39,17 +39,10 @@ const Register: NextPage<Props> = ({}) => {
         />
       </div>
       <div className="container mx-auto flex h-full items-center">
-        <div className="z-10 flex h-fit w-full flex-col space-y-4 rounded-2xl border-2 border-bosch-gray-100 bg-bosch-gray-800 p-24 dark:border dark:border-bosch-gray-600 md:ml-auto md:w-2/3 lg:w-2/4 xl:w-5/12">
+        <div className="z-10 flex h-fit w-full flex-col space-y-4 rounded-2xl border-2 border-bosch-light-gray-300 bg-bosch-dark-gray-400 p-24 dark:border dark:border-bosch-gray-600 md:ml-auto md:w-2/3 lg:w-2/4 xl:w-5/12">
           <div className="flex flex-col py-4">
-            <span className={`flex justify-center ${BoschSansBold.className}`}>
-              <h1 className="text-4xl font-extrabold text-bosch-gray-600 dark:text-bosch-white ">
-                BOSCH
-              </h1>
-              <h1 className="text-4xl font-bold text-bosch-gray-600 dark:text-transparent dark:bg-gradient-to-r ">
-                OASIS
-              </h1>
-            </span>
-            <h1 className="text-center text-bosch-white text-xl">Register</h1>
+            <Oasis />
+            <h1 className="text-center text-bosch-white text-xl font-thin">Register</h1>
           </div>
           <form className="space-y-12" action={handleRegister}>
             <div className="space-y-4">
@@ -73,7 +66,7 @@ const Register: NextPage<Props> = ({}) => {
 
             <div className="flex justify-end">
               <Button
-                className="bg-bosch-blue-500 text-bosch-white hover:bg-bosch-blue-750"
+                className="bg-oasis-aqua-400 text-bosch-white hover:bg-oasis-aqua-500"
                 type="submit"
               >
                 Create an Account
