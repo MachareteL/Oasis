@@ -21,18 +21,18 @@ const Login: NextPage<Props> = ({}) => {
     });
   }
   return (
-    <section className="relative h-screen text-gray-600">
-      <div className="absolute inset-0 bg-gray-900">
+    <section className="relative h-screen">
+      <div className="absolute inset-0 bg-bosch-black">
         <Image
           src={boschSuperGraph}
           alt=""
-          className="h-full w-full object-cover opacity-75"
+          className="h-full w-full object-cover opacity-70"
         />
       </div>
       <div className="container mx-auto flex h-full items-center px-5">
-        <div className="z-10 flex h-fit w-full flex-col space-y-4 rounded-2xl border-2 border-bosch-gray-100 bg-bosch-gray-800 p-8 dark:border dark:border-bosch-gray-600 md:ml-auto md:mt-0 md:w-1/2 lg:w-1/3">
+        <div className="z-10 flex h-fit w-full flex-col space-y-4 rounded-2xl p-8 md:ml-auto md:mt-0 md:w-1/2 lg:w-1/3 bg-bosch-white dark:bg-bosch-dark-gray-400">
           <div className="space-y-4">
-            <h1 className="text-xl font-bold text-bosch-gray-600 dark:text-bosch-white sm:text-2xl">
+            <h1 className="text-xl font-bold dark:text-bosch-white sm:text-2xl">
               Sign Up
             </h1>
             <h1 className="h-[1px] bg-bosch-gray-150 dark:bg-bosch-gray-500"></h1>
@@ -47,7 +47,7 @@ const Login: NextPage<Props> = ({}) => {
 
             <div className="flex justify-end">
               <Button
-                className="mr-5 bg-bosch-blue-500 text-bosch-white hover:bg-bosch-blue-750"
+                className="mr-5 text-bosch-white bg-oas"
                 type="submit"
               >
                 Create an Account

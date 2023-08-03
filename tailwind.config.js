@@ -28,12 +28,6 @@ export const theme = {
 
       },
       'oasis-standard':{
-        'aqua-400': '#18837E',
-        'aqua-300': '#419E98',
-        'aqua-purple-100': '#427595',
-        'aqua-purple-200': '#435C92',
-        'purple-600': '#433E8F',
-
         100: '#18837E', //oasis-aqua-400
         200: '#419E98', //oasis-aqua-300
         300: '#427595', //aqua-to-purple-100
