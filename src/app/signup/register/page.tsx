@@ -39,10 +39,12 @@ const Register: NextPage<Props> = ({}) => {
         />
       </div>
       <div className="container mx-auto flex h-full items-center">
-        <div className="z-10 flex h-fit w-full flex-col space-y-4 rounded-2xl border-2 border-bosch-light-gray-300 bg-bosch-dark-gray-400 p-24 dark:border dark:border-bosch-gray-600 md:ml-auto md:w-2/3 lg:w-2/4 xl:w-5/12">
-          <div className="flex flex-col py-4">
+        <div className="z-20 flex h-fit w-full flex-col space-y-4 rounded-2xl bg-bosch-dark-gray-400 p-24 shadow-lg md:ml-auto md:w-2/3 lg:w-2/4 xl:w-5/12">
+          <div className="flex flex-col pt-4">
             <Oasis />
-            <h1 className="text-center text-bosch-white text-xl font-thin">Register</h1>
+            <h1 className="text-center text-xl font-thin text-bosch-white">
+              Register
+            </h1>
           </div>
           <form className="space-y-12" action={handleRegister}>
             <div className="space-y-4">
@@ -57,9 +59,11 @@ const Register: NextPage<Props> = ({}) => {
               </div>
               <div>
                 <Input placeholder="Confirm Password" name="confirmPassword" />
-                <span className="flex justify-end text-bosch-white">
+                <span className="flex justify-end space-x-1 pt-2 text-bosch-dark-gray-200">
                   <p>Already have an account?</p>
-                  <Link href={"/signup"}>Sign In</Link>
+                  <Link href={"/signup"} className="text-oasis-standard-200">
+                    Sign In
+                  </Link>
                 </span>
               </div>
             </div>
