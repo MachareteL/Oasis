@@ -1,14 +1,43 @@
-import { BoschSansBlack, BoschSansBold, BoschSansLight, BoschSansMedium } from "@/fonts/fonts";
-import React, { type DetailedHTMLProps, type ButtonHTMLAttributes } from "react";
+"use client";
+import { BoschSansBold, BoschSansLight } from "@/fonts/fonts";
+import { useEffect } from "react";
 
-export default function GroupCard() {
+export default function GroupCard({
+  borderColorIndex,
+}: {
+  borderColorIndex: number;
+}) {
+  const borderColor = [
+    "before:bg-oasis-standard-100",
+    "before:bg-oasis-standard-200",
+    "before:bg-oasis-standard-300",
+    "before:bg-oasis-standard-400",
+    "before:bg-oasis-standard-500",
+    "before:bg-oasis-purple-100",
+    "before:bg-oasis-purple-200",
+    "before:bg-oasis-purple-300",
+    "before:bg-oasis-purple-400",
+    "before:bg-oasis-purple-500",
+    "before:bg-oasis-blue-100",
+    "before:bg-oasis-blue-200",
+    "before:bg-oasis-blue-300",
+    "before:bg-oasis-blue-400",
+    "before:bg-oasis-blue-500",
+  ];
+
   return (
-    <div className="flex flex-col w-1/6 border border-l-8 border-l-red-600 px-5 py-2 h-32 justify-between rounded-lg ">
-        <div className="flex flex-col">
-            <p className={`${BoschSansBold.className} text-lg text-bosch-black dark:text-bosch-light-gray-200`}>Title</p>
-            <p className={`${BoschSansLight.className}`}>Description</p>
-        </div>
-        <p className={`flex justify-end`}>area - name</p>
+    <div
+      className={`relative flex h-36 flex-col justify-between overflow-hidden rounded-lg border border-bosch-light-gray-200 bg-[var(--bgCardBorderColor)] from-10% px-5 py-2 before:absolute before:left-0 before:top-0 before:h-full before:w-2 dark:border-bosch-dark-gray-300 ${borderColor[borderColorIndex]} `}
+    >
+      <div className="flex flex-col">
+        <p
+          className={`${BoschSansBold.className} text-lg text-bosch-black dark:text-bosch-light-gray-200`}
+        >
+          Title
+        </p>
+        <p className={`${BoschSansLight.className}`}>Description</p>
+      </div>
+      <p className={`flex justify-end`}>area - name</p>
     </div>
   );
 }

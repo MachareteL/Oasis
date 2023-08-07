@@ -11,6 +11,8 @@ import GroupCard from "@/components/GroupCard";
 interface Props {}
 
 const Groups: NextPage<Props> = ({}) => {
+  const groups = [1, 2, 3, 4];
+  const colors = [];
   return (
     <div>
       <div className=" flex flex-col items-center space-y-2 p-20">
@@ -32,7 +34,13 @@ const Groups: NextPage<Props> = ({}) => {
           Your Bosch Chat
         </p>
       </div>
-      <GroupCard />
+      <div className="container mx-auto flex flex-col gap-4 px-2 sm:grid sm:grid-cols-2 xl:grid-cols-4">
+        {groups.map((group) => (
+          <GroupCard
+            borderColorIndex={Math.floor(Math.random() * 15)}
+          />
+        ))}
+      </div>
     </div>
   );
 };
