@@ -8,3 +8,7 @@ type ButtonProps = {
     className?: string
     children: React.ReactNode
 }
+
+type IconProps = {
+    className?: string
+}
