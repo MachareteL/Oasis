@@ -17,6 +17,8 @@ const Login: NextPage<Props> = ({}) => {
   const [user, setUser] = useState({ email: "", password: "" });
   async function handleLogin(event: React.FormEvent) {
     event.preventDefault();
+    console.log('onsubmit');
+    
     await signIn("credentials", {
       email: user.email,
       password: user.password,
@@ -68,7 +70,7 @@ const Login: NextPage<Props> = ({}) => {
         </div>
         <div className="z-10 flex w-full justify-center space-x-2 rounded-2xl bg-bosch-white py-8 dark:bg-bosch-dark-gray-400 md:ml-auto md:mt-0 md:w-2/3 lg:w-2/4 xl:w-5/12 opacity-90">
           <h1 className="text-lg text-bosch-black dark:text-bosch-light-gray-100">Don't have an account?</h1>
-              <Link href={"/signup/register"} className="text-oasis-aqua-300 hover:text-oasis-aqua-500 dark:hover:text-oasis-aqua-400 text-lg">Create one</Link>
+              <Link href="/signup/register" className="text-oasis-aqua-300 hover:text-oasis-aqua-500 dark:hover:text-oasis-aqua-400 text-lg">Create one</Link>
         </div>
       </div>
     </section>
