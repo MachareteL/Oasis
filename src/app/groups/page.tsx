@@ -15,22 +15,22 @@ const Groups: NextPage<Props> = ({}) => {
     <div>
       <div className=" flex flex-col items-center space-y-2 p-20">
         <div className="flex flex-col sm:flex-row sm:space-x-3">
-          <text
+          <p
             className={`text-5xl dark:text-bosch-dark-gray-100 ${BoschSansRegular.className}`}
           >
             Welcome to
-          </text>
+          </p>
           <h1
             className={`bg-bosch-black bg-gradient-to-r from-oasis-standard-100 from-10% to-oasis-standard-500 bg-clip-text text-5xl text-transparent dark:to-oasis-standard-550 ${BoschSansBlack.className}`}
           >
             OASIS
           </h1>
         </div>
-        <text
+        <p
           className={`text-2xl text-bosch-black dark:text-bosch-dark-gray-200 ${BoschSansLight.className}`}
         >
           Your Bosch Chat
-        </text>
+        </p>
       </div>
       <GroupCard />
     </div>
