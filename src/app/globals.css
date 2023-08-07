@@ -5,11 +5,9 @@
 :root {
   --foreground-rgb: #000000;
   --background-color: #fdfdfd;
-
 }
-html{
+html {
   min-height: 100vh;
-  
 }
 @media (prefers-color-scheme: dark) {
   :root {
@@ -22,4 +20,9 @@ body {
   color: var(--foreground-rgb);
   min-height: 100vh;
   background: var(--background-color);
+}
+
+.text-upright {
+  text-orientation: upright;
+  writing-mode: vertical-lr;
 }
