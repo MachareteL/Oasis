@@ -7,6 +7,7 @@ import { signIn, useSession } from "next-auth/react";
 import prisma from "@/lib/prisma";
 import Link from "next/link";
 import Oasis from "@/components/Oasis";
+import { hash } from "bcrypt";
 
 interface Props {}
 
@@ -23,7 +24,7 @@ const Register: NextPage<Props> = ({}) => {
     const user = await prisma.user.create({
       data: {
         email,
-        password,
+        password: await hash(password, 12),
         name,
       },
     });
