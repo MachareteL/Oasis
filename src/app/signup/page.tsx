@@ -6,6 +6,8 @@ import { signIn, useSession } from "next-auth/react";
 import { useState } from "react";
 import Image from "next/image";
 import boschSuperGraph from "../../../public/BOSCH.svg";
+import Oasis from "@/components/Oasis";
+import Link from "next/link";
 
 interface Props {}
 
@@ -29,31 +31,44 @@ const Login: NextPage<Props> = ({}) => {
           className="h-full w-full object-cover opacity-70"
         />
       </div>
-      <div className="container mx-auto flex h-full items-center px-5">
-        <div className="z-10 flex h-fit w-full flex-col space-y-4 rounded-2xl p-8 md:ml-auto md:mt-0 md:w-1/2 lg:w-1/3 bg-bosch-white dark:bg-bosch-dark-gray-400">
-          <div className="space-y-4">
-            <h1 className="text-xl font-bold dark:text-bosch-white sm:text-2xl">
-              Sign Up
+      <div className="container mx-auto flex h-full flex-col items-center justify-center space-y-4 px-5">
+        <div className="z-10 flex h-fit w-full flex-col space-y-4 rounded-2xl bg-bosch-white p-20 dark:bg-bosch-dark-gray-400 md:ml-auto md:mt-0 md:w-2/3 lg:w-2/4 xl:w-5/12 opacity-90">
+          <div className="flex flex-col">
+            <Oasis />
+            <h1 className="flex justify-center text-xl font-thin sm:text-2xl text-bosch-black dark:text-bosch-light-gray-100">
+              Sign In
             </h1>
-            <h1 className="h-[1px] bg-bosch-gray-150 dark:bg-bosch-gray-500"></h1>
           </div>
 
-          <form className="space-y-12"
-          onSubmit={(event) => {handleLogin(event)}}>
-            <div className="space-y-8 px-5">
+          <form
+            className="space-y-12"
+            onSubmit={(event) => {
+              handleLogin(event);
+            }}
+          >
+            <div className="space-y-4">
               <Input placeholder="E-mail" name="email" />
-              <Input placeholder="Password" name="password" />
+              <div className="space-y-1">
+                <Input placeholder="Password" name="password" />
+                <span className="flex justify-end text-sm text-bosch-dark-gray-200 opacity-80 hover:opacity-100">
+                  <Link href={"/signup"}>Forgot password?</Link>
+                </span>
+              </div>
             </div>
 
             <div className="flex justify-end">
               <Button
-                className="mr-5 text-bosch-white bg-oas"
+                className=" bg-oasis-aqua-400 text-bosch-white hover:bg-oasis-aqua-500"
                 type="submit"
               >
-                Create an Account
+                Sign In
               </Button>
             </div>
           </form>
+        </div>
+        <div className="z-10 flex w-full justify-center space-x-2 rounded-2xl bg-bosch-white py-8 dark:bg-bosch-dark-gray-400 md:ml-auto md:mt-0 md:w-2/3 lg:w-2/4 xl:w-5/12 opacity-90">
+          <h1 className="text-lg text-bosch-black dark:text-bosch-light-gray-100">Don't have an account?</h1>
+              <Link href={"/signup/register"} className="text-oasis-aqua-300 hover:text-oasis-aqua-500 dark:hover:text-oasis-aqua-400 text-lg">Create one</Link>
         </div>
       </div>
     </section>

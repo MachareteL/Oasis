@@ -28,11 +28,12 @@ export const theme = {
 
       },
       'oasis-standard':{
-        100: '#18837E', //oasis-aqua-400
-        200: '#419E98', //oasis-aqua-300
-        300: '#427595', //aqua-to-purple-100
-        400: '#435C92', //aqua-to-purple-200
-        500: '#433E8F', //oasis-purple-600
+        100: '#009B8F', 
+        200: '#3299AA', 
+        300: '#3F86BB', 
+        400: '#4976C8', 
+        500: '#524DB7', 
+        550: '#5F56E3', 
 
 
       },
