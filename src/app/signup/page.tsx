@@ -34,7 +34,7 @@ const Login: NextPage<Props> = ({}) => {
         />
       </div>
       <div className="container mx-auto flex h-full flex-col items-center justify-center space-y-4 px-5">
-        <div className="z-10 flex h-fit w-full flex-col space-y-4 rounded-2xl bg-bosch-white p-20 dark:bg-bosch-dark-gray-400 md:ml-auto md:mt-0 md:w-2/3 lg:w-2/4 xl:w-5/12 opacity-90">
+        <div className="z-10 flex h-fit w-full flex-col space-y-14 rounded-2xl bg-bosch-white px-20 py-36 dark:bg-bosch-dark-gray-400 md:ml-auto md:mt-0 md:w-2/3 lg:w-2/4 xl:w-5/12 opacity-90">
           <div className="flex flex-col">
             <Oasis />
             <h1 className="flex justify-center text-xl font-thin sm:text-2xl text-bosch-black dark:text-bosch-light-gray-100">
@@ -43,12 +43,12 @@ const Login: NextPage<Props> = ({}) => {
           </div>
 
           <form
-            className="space-y-12"
+            className="space-y-14"
             onSubmit={(event) => {
               handleLogin(event);
             }}
           >
-            <div className="space-y-4">
+            <div className="space-y-8">
               <Input placeholder="E-mail" name="email" />
               <div className="space-y-1">
                 <Input placeholder="Password" name="password" />
