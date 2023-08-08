@@ -24,3 +24,17 @@ type MessageProps = {
   createdAt: Date;
   createdByCurrentUser?: boolean;
 };
+
+type GroupCardProps = {
+  name: string;
+  description: string;
+  area: string;
+  members?: User[];
+  borderColorIndex: number
+};
+
+type User = {
+  id: string;
+  name: string;
+  email: string;
+};

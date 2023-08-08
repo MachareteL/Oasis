@@ -5,15 +5,34 @@ import {
   BoschSansRegular,
 } from "@/fonts/fonts";
 import GroupCard from "@/components/GroupCard";
+import prisma from "@/lib/prisma";
+import { getServerSession } from "next-auth/next";
+import { authOptions } from "@/lib/auth";
 
-interface Props {}
+async function getData() {
+  const session = await getServerSession(authOptions);
+  const user = session?.user;
+  if (!user) {
+    return [];
+  }
 
-const Groups: NextPage<Props> = ({}) => {
-  const groups = [1, 2, 3, 4];
-  const colors = [];
+  const groups = await prisma.group.findMany({
+    where: {
+      members: {
+        every: {
+          email: user.email,
+        },
+      },
+    },
+  });
+  return groups;
+}
+
+const Groups = async () => {
+  const groups = await getData();
+
   return (
     <div>
-      
       <div className=" flex flex-col items-center space-y-2 p-20">
         <div className="flex flex-col sm:flex-row sm:space-x-3">
           <p
@@ -37,6 +56,8 @@ const Groups: NextPage<Props> = ({}) => {
         {groups.map((group) => (
           <GroupCard
             borderColorIndex={Math.floor(Math.random() * 15)}
+            key={group.id}
+            {...group}
           />
         ))}
       </div>
