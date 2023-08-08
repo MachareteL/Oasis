@@ -11,9 +11,9 @@ export default function Menu() {
   const [open, setOpen] = useState(false);
 
   return (
-    <div className="absolute left-0 top-24 h-32 w-9 -translate-x-5 cursor-pointer  dark:bg-bosch-dark-gray-400 transition-all hover:translate-x-0">
+    <div className="absolute left-0 top-28 h-32 w-9 -translate-x-5 cursor-pointer  dark:bg-bosch-dark-gray-400 transition-all hover:translate-x-0">
       <div
-        className="relative h-full w-full overflow-hidden rounded-md after:absolute after:right-0 after:top-0 after:h-full after:w-2 after:bg-gradient-to-b after:from-oasis-standard-100 after:from-10% after:to-oasis-standard-500 border" 
+        className="relative h-full w-full overflow-hidden rounded-md after:absolute after:right-0 after:top-0 after:h-full after:w-2 after:bg-gradient-to-b after:from-oasis-standard-100 after:from-10% after:to-oasis-standard-500 borde dark:border-none" 
         onClick={() => setOpen(true)}
       >
         <h1

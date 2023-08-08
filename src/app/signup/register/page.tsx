@@ -2,7 +2,7 @@ import Button from "@/components/Button";
 import Input from "@/components/Input";
 import { NextPage } from "next";
 import Image from "next/image";
-import boschSuperGraph from "../../../../public/BOSCH.svg";
+import boschSuperGraph from "../../../../public/bosch-supergraphic-oasis.svg";
 import { signIn, useSession } from "next-auth/react";
 import prisma from "@/lib/prisma";
 import Link from "next/link";
@@ -31,8 +31,8 @@ const Register: NextPage<Props> = ({}) => {
     console.log(user);
   }
   return (
-    <section className="relative h-screen text-gray-600">
-      <div className="absolute inset-0 bg-gray-900">
+    <section className="relative h-screen">
+      <div className="absolute inset-0 bg-bosch-black">
         <Image
           src={boschSuperGraph}
           alt=""
@@ -40,10 +40,10 @@ const Register: NextPage<Props> = ({}) => {
         />
       </div>
       <div className="container mx-auto flex h-full items-center">
-        <div className="z-20 flex h-fit w-full flex-col space-y-4 rounded-2xl bg-bosch-dark-gray-400 p-24 shadow-lg md:ml-auto md:w-2/3 lg:w-2/4 xl:w-5/12">
+        <div className="z-10 flex h-fit w-full flex-col space-y-4 rounded-2xl bg-bosch-white p-20 dark:bg-bosch-dark-gray-400 md:ml-auto md:mt-0 md:w-2/3 lg:w-2/4 xl:w-5/12 opacity-90">
           <div className="flex flex-col pt-4">
             <Oasis />
-            <h1 className="text-center text-xl font-thin text-bosch-white">
+            <h1 className="flex justify-center text-xl font-thin sm:text-2xl text-bosch-black dark:text-bosch-light-gray-100">
               Register
             </h1>
           </div>

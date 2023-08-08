@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import React from "react";
-import BoschHeader from "../../public/BOSCH.svg";
+import BoschHeader from "../../public/bosch-supergraphic-oasis.svg";
 import BoschBlackLogo from "../../public/BoschBlack.svg";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
