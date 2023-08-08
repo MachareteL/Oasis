@@ -17,11 +17,11 @@ export const theme = {
         black: "#101112",
         "light-gray-100": "#EFF1F2", //user text in chat
         "light-gray-200": "#E0E2E5", //borders and lines
-        "light-gray-300": "#71767C", //deselected and texts
+        "light-gray-300": "#71767C", //deselected, texts and icons
         "light-gray-400": "#1A1C1D", //text
 
         "dark-gray-100": "#EFF1F2", //text
-        "dark-gray-200": "#A4ABB3", //deselected inputs and subtitles
+        "dark-gray-200": "#A4ABB3", //deselected inputs, subtitles, icons
         "dark-gray-300": "#656A6F", //borders, lines and texts
         "dark-gray-400": "#2E3033", //background and blackout modal
         "dark-gray-500": "#232628", //background modal
@@ -37,8 +37,8 @@ export const theme = {
       "oasis-aqua": {
         100: "#8DD2CD",
         200: "#66B8B2",
-        300: "#419E98",
-        400: "#18837E",
+        300: "#419E98", //icon hover - dark mode
+        400: "#18837E", //icon hover - light mode
         500: "#116864",
         600: "#0A4F4B",
       },
