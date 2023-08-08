@@ -13,18 +13,31 @@ datasource db {
 //next-auth setup
 
 model User {
-  id       String  @id @default(cuid())
+  id       String     @id @default(cuid())
   name     String?
-  email    String? @unique
+  email    String?    @unique
   password String
-  Group    Group?  @relation(fields: [groupId], references: [id])
+  Group    Group?     @relation(fields: [groupId], references: [id])
   groupId  String?
+  Messages Messages[]
 }
 
 model Group {
-  id          String @id @default(cuid())
+  id          String     @id @default(cuid())
   name        String
   description String
   area        String
   members     User[]
+  Messages    Messages[]
+}
+
+model Messages {
+  userId    String
+  groupId   String
+  content   String
+  User      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  createdAt DateTime
+  Group     Group    @relation(fields: [groupId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, groupId])
 }

@@ -29,7 +29,7 @@ type GroupCardProps = {
   name: string;
   description: string;
   area: string;
-  members?: User[];
+  members?: User[] | number;
   borderColorIndex: number
 };
 

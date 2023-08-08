@@ -1,4 +1,4 @@
-import { NextPage } from "next";
+
 import {
   BoschSansBlack,
   BoschSansLight,
@@ -24,12 +24,33 @@ async function getData() {
         },
       },
     },
+    select: {
+      id: true,
+      area: true,
+      description: true,
+      name: true,
+      _count: {
+        select: {
+          members: true,
+        },
+      },
+    },
   });
-  return groups;
+
+  return groups.map((group) => ({
+    id: group.id,
+    area: group.area,
+    name: group.name,
+    description: group.description,
+    members: group._count.members,
+  }));
 }
 
 const Groups = async () => {
   const groups = await getData();
+  if (!groups) {
+    return;
+  }
 
   return (
     <div>
