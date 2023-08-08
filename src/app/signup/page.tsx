@@ -5,7 +5,7 @@ import { NextPage } from "next";
 import { signIn, useSession } from "next-auth/react";
 import { useState } from "react";
 import Image from "next/image";
-import boschSuperGraph from "../../../public/BOSCH.svg";
+import boschSuperGraph from "../../../public/BoschSupergraphicOasis.png";
 import Oasis from "@/components/Oasis";
 import Link from "next/link";
 
