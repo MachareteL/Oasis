@@ -2,7 +2,6 @@ import { NextPage } from "next";
 import Link from "next/link";
 import {
   BoschSansBlack,
-  BoschSansBold,
   BoschSansLight,
   BoschSansMedium,
   BoschSansRegular,
