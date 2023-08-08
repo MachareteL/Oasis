@@ -1,9 +1,7 @@
 import { NextPage } from "next";
 import {
   BoschSansBlack,
-  BoschSansBold,
   BoschSansLight,
-  BoschSansMedium,
   BoschSansRegular,
 } from "@/fonts/fonts";
 import GroupCard from "@/components/GroupCard";
@@ -15,6 +13,7 @@ const Groups: NextPage<Props> = ({}) => {
   const colors = [];
   return (
     <div>
+      
       <div className=" flex flex-col items-center space-y-2 p-20">
         <div className="flex flex-col sm:flex-row sm:space-x-3">
           <p

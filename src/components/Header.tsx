@@ -4,7 +4,7 @@ import React from "react";
 import BoschHeader from "../../public/bosch-supergraphic-oasis.svg";
 import BoschBlackLogo from "../../public/BoschBlack.svg";
 import { usePathname } from "next/navigation";
-import Link from "next/link";
+import Menu from "./Menu";
 
 export default function Header() {
   const pathname = usePathname();
@@ -14,6 +14,8 @@ export default function Header() {
   }
   return (
     <div>
+      <Menu />
+
       <Image
         src={BoschHeader}
         alt="hyperGraphic"

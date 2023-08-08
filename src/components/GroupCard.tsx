@@ -1,6 +1,5 @@
 "use client";
 import { BoschSansBold, BoschSansLight } from "@/fonts/fonts";
-import { useEffect } from "react";
 import Link from "next/link";
 
 export default function GroupCard({

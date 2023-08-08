@@ -1,10 +1,9 @@
 "use client";
 import { BoschSansLight } from "@/fonts/fonts";
-import { Box, Drawer } from "@mui/material";
+import { Drawer } from "@mui/material";
 import React, { useState } from "react";
 import Link from "next/link";
 import { XMarkIcon } from "@heroicons/react/24/outline";
-import { PlusIcon } from "@heroicons/react/20/solid";
 import { FolderIcon } from "@heroicons/react/24/outline";
 import { PlusSmallIcon } from "@heroicons/react/24/solid";
 
