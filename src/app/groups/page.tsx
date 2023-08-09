@@ -8,6 +8,7 @@ import GroupCard from "@/components/GroupCard";
 import prisma from "@/lib/prisma";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/lib/auth";
+import CreateGroupModal from "@/components/CreateGroupModal";
 
 async function getData() {
   const session = await getServerSession(authOptions);
@@ -54,6 +55,7 @@ const Groups = async () => {
 
   return (
     <div>
+      <CreateGroupModal />
       <div className=" flex flex-col items-center space-y-2 p-20">
         <div className="flex flex-col sm:flex-row sm:space-x-3">
           <p
