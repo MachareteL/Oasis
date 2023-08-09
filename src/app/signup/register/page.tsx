@@ -1,5 +1,4 @@
 import Button from "@/components/Button";
-import Input from "@/components/Input";
 import { NextPage } from "next";
 import Image from "next/image";
 import boschSuperGraph from "../../../../public/bosch-supergraphic-oasis.svg";
@@ -8,6 +7,7 @@ import prisma from "@/lib/prisma";
 import Link from "next/link";
 import Oasis from "@/components/Oasis";
 import { hash } from "bcrypt";
+import InputStandart from "@/components/InputStandart";
 
 interface Props {}
 
@@ -50,16 +50,16 @@ const Register: NextPage<Props> = ({}) => {
           <form className="space-y-12" action={handleRegister}>
             <div className="space-y-4">
               <div>
-                <Input placeholder="Name" className="text-white" name="name" />
+                <InputStandart placeholder="Name" className="text-white" name="name" />
               </div>
               <div>
-                <Input placeholder="E-mail" name="email" />
+                <InputStandart placeholder="E-mail" name="email" />
               </div>
               <div>
-                <Input placeholder="Password" name="password" />
+                <InputStandart placeholder="Password" name="password" />
               </div>
               <div>
-                <Input placeholder="Confirm Password" name="confirmPassword" />
+                <InputStandart placeholder="Confirm Password" name="confirmPassword" />
                 <span className="flex justify-end space-x-1 pt-2 text-bosch-dark-gray-200">
                   <p>Already have an account?</p>
                   <Link href={"/signup"} className="text-oasis-standard-200">
@@ -81,38 +81,6 @@ const Register: NextPage<Props> = ({}) => {
         </div>
       </div>
     </section>
-
-    // <div classNameName="absolute top-0 flex h-full w-full items-center justify-center">
-    //   <div classNameName="container grid grid-cols-12 rounded-2xl border-2 border-bosch-gray-100 bg-bosch-gray-800 p-8 dark:border dark:border-bosch-gray-600">
-    //     <div classNameName="col-span-6"></div>
-    //     <div classNameName="col-span-4">
-    //       <div classNameName="space-y-4">
-    //         <h1 classNameName="text-xl font-bold text-bosch-gray-600 dark:text-bosch-white sm:text-2xl">
-    //           Register
-    //         </h1>
-    //         <h1 classNameName="h-[1px] bg-bosch-gray-150 dark:bg-bosch-gray-500"></h1>
-    //       </div>
-
-    //       <htmlForm classNameName="space-y-12">
-    //         <div classNameName="space-y-8 px-5">
-    //           <Input placeholder="Name" />
-    //           <Input placeholder="E-mail" />
-    //           <Input placeholder="Password" />
-    //           <Input placeholder="Confirm Password" />
-    //         </div>
-
-    //         <div classNameName="flex justify-end">
-    //           <Button
-    //             classNameName="mr-5 bg-bosch-blue-500 text-bosch-white hover:bg-bosch-blue-750"
-    //             type="submit"
-    //           >
-    //             Create an Account
-    //           </Button>
-    //         </div>
-    //       </htmlForm>
-    //     </div>
-    //   </div>
-    // </div>
   );
 };
 

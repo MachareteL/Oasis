@@ -1,6 +1,6 @@
 "use client";
 import Button from "@/components/Button";
-import Input from "@/components/Input";
+import InputStandart from "@/components/InputStandart";
 import { NextPage } from "next";
 import { signIn, useSession, signOut } from "next-auth/react";
 import { useState } from "react";
@@ -54,7 +54,7 @@ const Login: NextPage<Props> = ({}) => {
             }}
           >
             <div className="space-y-8">
-              <Input
+              <InputStandart
                 placeholder="E-mail"
                 name="email"
                 onChange={(event) => {
@@ -62,7 +62,7 @@ const Login: NextPage<Props> = ({}) => {
                 }}
               />
               <div className="space-y-1">
-                <Input
+                <InputStandart
                   placeholder="Password"
                   name="password"
                   onChange={(event) => {
