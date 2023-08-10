@@ -11,7 +11,7 @@ const TextInput = styled(TextField)(
   theme
     ? {
         "& label.Mui-focused": {
-          color: "#B2B9C0",
+          color: "#419E98",
         },
         "& .MuiInput-underline:after": {
           borderBottomColor: "#7D8389",
@@ -24,7 +24,7 @@ const TextInput = styled(TextField)(
             borderColor: "#7D8389",
           },
           "&.Mui-focused fieldset": {
-            borderColor: "#B2B9C0",
+            borderColor: "#419E98",
           },
         },
       }
@@ -64,7 +64,7 @@ export default function InputStandart({
         label={placeholder}
         onChange={onChange}
         variant="outlined"
-        inputProps={{ className: `text-bosch-black dark:text-bosch-white`, ...attr }}
+        inputProps={{ className: `text-bosch-black  `, ...attr }}
         className="w-full"
         size="small"
       />

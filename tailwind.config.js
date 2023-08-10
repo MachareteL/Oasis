@@ -17,9 +17,10 @@ export const theme = {
         black: "#101112",
         "light-gray-100": "#EFF1F2", //user text in chat
         "light-gray-200": "#E0E2E5", //borders and lines
+        "light-gray-250": "#B2B9C0", // placeholder
         "light-gray-300": "#71767C", //deselected, texts and icons
         "light-gray-400": "#1A1C1D", //text
-
+        
         "dark-gray-100": "#EFF1F2", //text
         "dark-gray-200": "#A4ABB3", //deselected inputs, subtitles, icons
         "dark-gray-300": "#656A6F", //borders, lines and texts

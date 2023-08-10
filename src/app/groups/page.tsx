@@ -8,7 +8,8 @@ import GroupCard from "@/components/GroupCard";
 import prisma from "@/lib/prisma";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/lib/auth";
-import CreateGroupModal from "@/components/CreateGroupModal";
+import CreateRoomModal from "@/components/CreateRoomModal";
+import JoinGroupModal from "@/components/JoinGroupModal";
 
 async function getData() {
   const session = await getServerSession(authOptions);
@@ -55,11 +56,12 @@ const Groups = async () => {
 
   return (
     <div>
-      <CreateGroupModal />
+      <CreateRoomModal />
+      <JoinGroupModal />
       <div className=" flex flex-col items-center space-y-2 p-20">
         <div className="flex flex-col sm:flex-row sm:space-x-3">
           <p
-            className={`text-5xl dark:text-bosch-dark-gray-100 ${BoschSansRegular.className}`}
+            className={`text-5xl   ${BoschSansRegular.className}`}
           >
             Welcome to
           </p>
@@ -70,7 +72,7 @@ const Groups = async () => {
           </h1>
         </div>
         <p
-          className={`text-2xl text-bosch-black dark:text-bosch-dark-gray-200 ${BoschSansLight.className}`}
+          className={`text-2xl dark:text-bosch-dark-gray-200 ${BoschSansLight.className}`}
         >
           Your Bosch Chat
         </p>

@@ -43,7 +43,7 @@ const Register: NextPage<Props> = ({}) => {
         <div className="z-10 flex h-fit w-full flex-col space-y-4 rounded-2xl bg-bosch-white p-20 dark:bg-bosch-dark-gray-400 md:ml-auto md:mt-0 md:w-2/3 lg:w-2/4 xl:w-5/12 opacity-90">
           <div className="flex flex-col pt-4">
             <Oasis />
-            <h1 className="flex justify-center text-xl font-thin sm:text-2xl text-bosch-black dark:text-bosch-light-gray-100">
+            <h1 className="flex justify-center text-xl font-thin sm:text-2xl dark:text-bosch-light-gray-100">
               Register
             </h1>
           </div>

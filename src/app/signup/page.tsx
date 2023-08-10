@@ -42,7 +42,7 @@ const Login: NextPage<Props> = ({}) => {
         <div className="z-10 flex h-fit w-full flex-col space-y-14 rounded-2xl bg-bosch-white px-20 py-36 opacity-90 dark:bg-bosch-dark-gray-400 md:ml-auto md:mt-0 md:w-2/3 lg:w-2/4 xl:w-5/12">
           <div className="flex flex-col">
             <Oasis />
-            <h1 className="flex justify-center text-xl font-thin text-bosch-black dark:text-bosch-light-gray-100 sm:text-2xl">
+            <h1 className="flex justify-center text-xl font-thin dark:text-bosch-light-gray-100 sm:text-2xl">
               Sign In
             </h1>
           </div>
@@ -86,8 +86,8 @@ const Login: NextPage<Props> = ({}) => {
           </form>
         </div>
         <div className="z-10 flex w-full justify-center space-x-2 rounded-2xl bg-bosch-white py-8 opacity-90 dark:bg-bosch-dark-gray-400 md:ml-auto md:mt-0 md:w-2/3 lg:w-2/4 xl:w-5/12">
-          <h1 className="text-lg text-bosch-black dark:text-bosch-light-gray-100">
-            Don&apos;t have an account?
+          <h1 className="text-lg dark:text-bosch-light-gray-100">
+            Don't have an account?
           </h1>
           <Link
             href="/signup/register"
