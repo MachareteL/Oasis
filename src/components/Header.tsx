@@ -8,7 +8,7 @@ import Menu from "./Menu";
 
 export default function Header() {
   const pathname = usePathname();
-  if (pathname == "/signup" || pathname == '/signup/register') {
+  if (pathname == "/signup" || pathname == '/signup/register' || pathname == '/signup/changepassword' || pathname == '/signup/sendcode') {
     return <></>;
     // commit pls
   }

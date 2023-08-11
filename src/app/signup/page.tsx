@@ -8,6 +8,7 @@ import Image from "next/image";
 import boschSuperGraph from "../../../public/bosch-supergraphic-oasis.svg";
 import Oasis from "@/components/Oasis";
 import Link from "next/link";
+import { BoschSansBold, BoschSansLight, BoschSansMedium } from "@/fonts/fonts";
 
 interface Props {}
 
@@ -39,10 +40,10 @@ const Login: NextPage<Props> = ({}) => {
         />
       </div>
       <div className="container mx-auto flex h-full flex-col items-center justify-center space-y-4 px-5">
-        <div className="z-10 flex h-fit w-full flex-col space-y-14 rounded-2xl bg-bosch-white px-20 py-36 opacity-90 dark:bg-bosch-dark-gray-400 md:ml-auto md:mt-0 md:w-2/3 lg:w-2/4 xl:w-5/12">
+        <div className="z-10 flex h-fit w-full flex-col space-y-12 rounded-2xl bg-bosch-white px-20 py-24 opacity-90 dark:bg-bosch-dark-gray-400 md:ml-auto md:mt-0 md:w-2/3 lg:w-2/4 xl:w-5/12">
           <div className="flex flex-col">
             <Oasis />
-            <h1 className="flex justify-center text-xl font-thin dark:text-bosch-light-gray-100 sm:text-2xl">
+            <h1 className={`flex justify-center text-xl sm:text-2xl ${BoschSansLight.className}`}>
               Sign In
             </h1>
           </div>
@@ -69,8 +70,8 @@ const Login: NextPage<Props> = ({}) => {
                     setUser({ ...user, password: event.target.value });
                   }}
                 />
-                <span className="flex justify-end text-sm text-bosch-dark-gray-200 opacity-80 hover:opacity-100">
-                  <Link href={"/signup"}>Forgot password?</Link>
+                <span className="flex justify-end text-sm text-bosch-dark-gray-200 opacity-80 hover:opacity-100 hover:text-oasis-aqua-300">
+                  <Link href={"/signup/sendcode"}>Forgot password?</Link>
                 </span>
               </div>
             </div>
@@ -86,12 +87,12 @@ const Login: NextPage<Props> = ({}) => {
           </form>
         </div>
         <div className="z-10 flex w-full justify-center space-x-2 rounded-2xl bg-bosch-white py-8 opacity-90 dark:bg-bosch-dark-gray-400 md:ml-auto md:mt-0 md:w-2/3 lg:w-2/4 xl:w-5/12">
-          <h1 className="text-lg dark:text-bosch-light-gray-100">
+          <h1 className={`text-lg ${BoschSansMedium.className}`}>
             Don't have an account?
           </h1>
           <Link
             href="/signup/register"
-            className="text-lg text-oasis-aqua-300 hover:text-oasis-aqua-500 dark:hover:text-oasis-aqua-400"
+            className={`text-lg hover:text-oasis-aqua-300 ${BoschSansMedium.className} underline`}
           >
             Create one
           </Link>
