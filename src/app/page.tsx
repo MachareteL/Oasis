@@ -30,7 +30,7 @@ const Home: NextPage<Props> = ({}) => {
       </div>
 
       <div className="flex flex-col items-start justify-evenly space-y-5 sm:flex-row sm:space-y-0">
-        <Link href={"/"} className="flex max-w-sm flex-col items-center space-y-4 rounded-xl border border-bosch-light-gray-200 px-5 py-12 transition-transform hover:-translate-y-1 hover:shadow-lg dark:hover:shadow-bosch-light-gray-400 dark:border-bosch-dark-gray-300 ">
+        <Link href={"/chat"} className="flex max-w-sm flex-col items-center space-y-4 rounded-xl border border-bosch-light-gray-200 px-5 py-12 transition-transform hover:-translate-y-1 hover:shadow-lg dark:hover:shadow-bosch-light-gray-400 dark:border-bosch-dark-gray-300 ">
           <p className={`text-2xl dark:font-medium   ${BoschSansMedium.className}`} >
             Start a New Chat
           </p>
@@ -38,9 +38,9 @@ const Home: NextPage<Props> = ({}) => {
             Here is your space, for your documents and your questions
           </p>
         </Link>
-        <Link href={"/groups"} className="flex max-w-sm flex-col items-center space-y-4 rounded-xl border border-bosch-light-gray-200 px-5 py-12 transition-transform hover:-translate-y-1 hover:shadow-lg dark:hover:shadow-bosch-light-gray-400 dark:border-bosch-dark-gray-300 ">
+        <Link href={"/ room"} className="flex max-w-sm flex-col items-center space-y-4 rounded-xl border border-bosch-light-gray-200 px-5 py-12 transition-transform hover:-translate-y-1 hover:shadow-lg dark:hover:shadow-bosch-light-gray-400 dark:border-bosch-dark-gray-300 ">
           <p className={`text-2xl dark:font-medium   ${BoschSansMedium.className}`} >
-            Groups You Join
+             room You Join
           </p>
           <p className={`flex text-center text-lg dark:text-bosch-dark-gray-200 ${BoschSansLight.className}`} >
             Create or join teams to share documents and ask questions together

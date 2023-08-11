@@ -2,13 +2,13 @@
 import { BoschSansBold, BoschSansLight } from "@/fonts/fonts";
 import Link from "next/link";
 
-export default function GroupCard({
+export default function  RoomCard({
   borderColorIndex,
   area,
   description,
   name,
   members,
-}: GroupCardProps) {
+}:  RoomCardProps) {
   const borderColor = [
     "before:bg-oasis-standard-100",
     "before:bg-oasis-standard-200",

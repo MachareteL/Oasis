@@ -4,12 +4,12 @@ import {
   BoschSansLight,
   BoschSansRegular,
 } from "@/fonts/fonts";
-import GroupCard from "@/components/GroupCard";
+import  RoomCard from "@/components/RoomCard";
 import prisma from "@/lib/prisma";
 import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/lib/auth";
 import CreateRoomModal from "@/components/CreateRoomModal";
-import JoinGroupModal from "@/components/JoinGroupModal";
+import JoinRoomModal from "@/components/JoinRoomModal";
 
 async function getData() {
   const session = await getServerSession(authOptions);
@@ -18,7 +18,7 @@ async function getData() {
     return [];
   }
 
-  const groups = await prisma.group.findMany({
+  const  room = await prisma.group.findMany({
     where: {
       members: {
         every: {
@@ -39,7 +39,7 @@ async function getData() {
     },
   });
 
-  return groups.map((group) => ({
+  return  room.map((group) => ({
     id: group.id,
     area: group.area,
     name: group.name,
@@ -48,16 +48,16 @@ async function getData() {
   }));
 }
 
-const Groups = async () => {
-  const groups = await getData();
-  if (!groups) {
+const Room = async () => {
+  const  room = await getData();
+  if (! room) {
     return;
   }
 
   return (
     <div>
       <CreateRoomModal />
-      <JoinGroupModal />
+      <JoinRoomModal />
       <div className=" flex flex-col items-center space-y-2 p-20">
         <div className="flex flex-col sm:flex-row sm:space-x-3">
           <p
@@ -78,8 +78,8 @@ const Groups = async () => {
         </p>
       </div>
       <div className="container mx-auto flex flex-col gap-4 px-2 sm:grid sm:grid-cols-2 xl:grid-cols-4">
-        {groups.map((group) => (
-          <GroupCard
+        { room.map((group) => (
+          < RoomCard
             borderColorIndex={Math.floor(Math.random() * 15)}
             key={group.id}
             {...group}
@@ -90,4 +90,4 @@ const Groups = async () => {
   );
 };
 
-export default Groups;
+export default Room;

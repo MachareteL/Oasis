@@ -37,17 +37,17 @@ export default function Menu() {
           <div className="px-8 pt-20 space-y-3">
             <Link
               href={"/chat"}
-              className="flex items-center justify-between rounded-lg border border-bosch-light-gray-200 h-14 px-4 transition-transform hover:-translate-y-1 hover:shadow-md text-bosch-light-gray-300 dark:border-bosch-dark-gray-300   dark:hover:shadow-bosch-light-gray-400"
+              className="flex items-center justify-between rounded-lg border h-14 px-4 transition-transform hover:-translate-y-1 hover:shadow-md text-bosch-light-gray-300 dark:text-bosch-dark-gray-100 border-bosch-light-gray-200 dark:border-bosch-dark-gray-200  dark:hover:shadow-bosch-light-gray-400"
             >
               <PlusSmallIcon className="w-10 -ml-2"/>
               New Chat
             </Link>
             <Link
-              href={"/groups"}
-              className="flex items-center justify-between rounded-lg border border-bosch-light-gray-200 h-14 px-4 transition-transform hover:-translate-y-1 hover:shadow-md text-bosch-light-gray-300 dark:border-bosch-dark-gray-300   dark:hover:shadow-bosch-light-gray-400"
+              href={"/ room"}
+              className="flex items-center justify-between rounded-lg border h-14 px-4 transition-transform hover:-translate-y-1 hover:shadow-md text-bosch-light-gray-300 dark:text-bosch-dark-gray-100 border-bosch-light-gray-200 dark:border-bosch-dark-gray-200  dark:hover:shadow-bosch-light-gray-400"
             >
               <FolderIcon className="w-7" />
-              Your Groups
+              Your  room
             </Link>
           </div>
         </div>

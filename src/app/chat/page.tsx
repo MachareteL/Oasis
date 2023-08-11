@@ -1,4 +1,5 @@
 import InputStandart from "@/components/InputStandart";
+import ReadRoomInfosModal from "@/components/ReadRoomInfosModal";
 import { PaperAirplaneIcon } from "@heroicons/react/24/outline";
 import { NextPage } from "next";
 
@@ -7,6 +8,7 @@ interface Props {}
 const Page: NextPage<Props> = ({}) => {
   return (
     <div>
+      <ReadRoomInfosModal />
       <form
       className="px-5 pb-4 pt-3 absolute bottom-0 w-full border-t border-bosch-light-gray-200 dark:border-bosch-dark-gray-300 flex justify-center">
         <div className="flex items-center space-x-6 w-11/12 max-w-5xl">

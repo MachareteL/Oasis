@@ -2,7 +2,7 @@ import { PrismaClient } from "@prisma/client";
 const prisma = new PrismaClient();
 
 async function main() {
-  const groups = await prisma.group.create({
+  const  room = await prisma.group.create({
     data: {
       area: "ETS",
       description: "happy happy happy ",
@@ -14,7 +14,7 @@ async function main() {
       },
     },
   });
-  const groups1 = await prisma.group.create({
+  const  room1 = await prisma.group.create({
     data: {
       area: "ETS",
       description: "Sad Sad Sad",
@@ -26,7 +26,7 @@ async function main() {
       },
     },
   });
-  console.log({ groups, groups1 });
+  console.log({  room,  room1 });
 }
 
 main()

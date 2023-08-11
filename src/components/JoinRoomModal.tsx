@@ -5,7 +5,7 @@ import InputStandart from "./InputStandart";
 import * as React from "react";
 import { UserGroupIcon } from "@heroicons/react/24/outline";
 
-const JoinGroupModal: React.FC = () => {
+const JoinRoomModal: React.FC = () => {
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -30,7 +30,7 @@ const JoinGroupModal: React.FC = () => {
           </p>
           <InputStandart placeholder="Code" />
           <div className="flex justify-end space-x-3 pt-10">
-            <Button className="border border-bosch-light-gray-200 text-bosch-light-gray-300 hover:bg-bosch-light-gray-100 dark:border-bosch-dark-gray-300   dark:hover:bg-bosch-dark-gray-400">
+            <Button onClick={handleClose} className="border border-bosch-light-gray-200 text-bosch-light-gray-300 hover:bg-bosch-light-gray-100 dark:border-bosch-dark-gray-300   dark:hover:bg-bosch-dark-gray-400">
               Cancel
             </Button>
             <Button className=" bg-oasis-aqua-400 text-bosch-white hover:bg-oasis-aqua-500">
@@ -43,4 +43,4 @@ const JoinGroupModal: React.FC = () => {
   );
 };
 
-export default JoinGroupModal;
+export default JoinRoomModal;
