@@ -12,7 +12,7 @@ const JoinRoomModal: React.FC = () => {
 
   return (
     <div>
-      <Button onClick={handleOpen} className="shadow-none absolute right-6 top-52">
+      <Button onClick={handleOpen} className="shadow-none absolute top-44 right-6">
         <UserGroupIcon className="w-9 hover:text-oasis-aqua-400 dark:hover:text-oasis-aqua-300" />
       </Button>
       <Modal

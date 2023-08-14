@@ -9,6 +9,7 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 import InputStandart from "./InputStandart";
+import ItemRoom from "./ItemRoom";
 
 interface FileObject {
   name: string;
@@ -23,6 +24,8 @@ function ChildModal() {
     setOpen(false);
   };
   const [uploadedFiles, setUploadedFiles] = React.useState<FileObject[]>([]);
+  const [itemArea, setItemArea] = React.useState<FileObject[]>([]);
+  const [itemPeople, setItemPeople] = React.useState<FileObject[]>([]);
 
   const handleUploadFiles = (files: FileObject[]) => {
     const uploaded: FileObject[] = [...uploadedFiles];
@@ -30,7 +33,7 @@ function ChildModal() {
 
     files.some((file) => {
       if (uploaded.findIndex((f) => f.name === file.name) === -1) {
-        uploaded.push(file);      
+        uploaded.push(file);
       }
     });
 
@@ -52,31 +55,52 @@ function ChildModal() {
 
   return (
     <React.Fragment>
-      <Button onClick={handleOpen} className=" bg-oasis-aqua-400 text-bosch-white hover:bg-oasis-aqua-500">Edit Room</Button>
+      <Button
+        onClick={handleOpen}
+        className=" bg-oasis-aqua-400 text-bosch-white hover:bg-oasis-aqua-500"
+      >
+        Edit Room
+      </Button>
       <Modal
         open={open}
         onClose={handleClose}
         aria-labelledby="child-modal-title"
         aria-describedby="child-modal-description"
-        className="flex items-start "
+        className="flex items-center justify-center"
       >
         <div className="m-10 flex w-full max-w-2xl flex-col rounded-2xl bg-bosch-white px-8 py-5 dark:bg-bosch-dark-gray-500 sm:px-12 sm:py-8">
-          <p
-            className={'text-lg font-bold'}
-          >
-            Edit Room
-          </p>
+          <p className={"text-lg font-bold"}>Edit Room</p>
           <h1 className="-mx-2 mb-5 mt-3 h-0.5 bg-bosch-light-gray-100 dark:bg-bosch-dark-gray-300" />
           <div className="space-y-5">
             <InputStandart placeholder="Title" />
             <InputStandart placeholder="Description" />
             <div className="flex justify-between space-x-3">
-              <div className="w-2/5">
+              <div className="w-2/5  space-y-2">
                 <InputStandart placeholder="Areas" />
+                <div className="flex flex-wrap">
+                  <ItemRoom title={"ETS"} />
+                  <ItemRoom title={"EXEMPLO"} />
+                  <ItemRoom title={"DSO"} />
+                </div>
+                <div className="max-h-28 overflow-y-scroll">
+                  {itemArea.map((item) => (
+                    <ItemRoom />
+                  ))}
+                </div>
               </div>
-              <div></div>
-              <div className="w-3/5">
+              <div className="w-3/5 space-y-2">
                 <InputStandart placeholder="People" />
+                <div className="flex flex-wrap">
+                  <ItemRoom title={"raissa"} />
+                  <ItemRoom title={"lucas"} />
+                  <ItemRoom title={"gustavo"} />
+                  <ItemRoom title={"livea"} />
+                </div>
+                <div className="max-h-28 overflow-y-scroll">
+                  {itemPeople.map((item) => (
+                    <ItemRoom />
+                  ))}
+                </div>
               </div>
             </div>
             <div className="flex flex-col space-y-2">
@@ -98,9 +122,9 @@ function ChildModal() {
                 ></input>
                 itens: {uploadedFiles.length}
               </div>
-              <div className="max-h-28 overflow-y-scroll border rounded-lg border-bosch-light-gray-200 dark:border-bosch-dark-gray-300">
+              <div className="max-h-28 overflow-y-scroll rounded-lg border border-bosch-light-gray-200 dark:border-bosch-dark-gray-300">
                 {uploadedFiles.map((file) => (
-                  <div className="flex px-2 pt-2 pb-1 text-sm justify-between border-b border-bosch-light-gray-200 dark:border-bosch-dark-gray-300   hover:bg-bosch-light-gray-100 dark:hover:bg-bosch-dark-gray-400">
+                  <div className="flex justify-between border-b border-bosch-light-gray-200 px-2 pb-1 pt-2 text-sm hover:bg-bosch-light-gray-100   dark:border-bosch-dark-gray-300 dark:hover:bg-bosch-dark-gray-400">
                     {file.name}
                     <button
                       onClick={() => {
@@ -115,10 +139,16 @@ function ChildModal() {
             </div>
           </div>
           <div className="flex justify-end space-x-3 pt-10">
-            <Button onClick={handleClose} className="border border-bosch-light-gray-200 text-bosch-light-gray-300 hover:bg-bosch-light-gray-100 dark:border-bosch-dark-gray-300   dark:hover:bg-bosch-dark-gray-400">
+            <Button
+              onClick={handleClose}
+              className="border border-bosch-light-gray-200 text-bosch-light-gray-300 hover:bg-bosch-light-gray-100 dark:border-bosch-dark-gray-300   dark:hover:bg-bosch-dark-gray-400"
+            >
               Cancel
             </Button>
-            <Button className=" bg-oasis-aqua-400 text-bosch-white hover:bg-oasis-aqua-500">
+            <Button
+              onClick={handleClose}
+              className=" bg-oasis-aqua-400 text-bosch-white hover:bg-oasis-aqua-500"
+            >
               Save
             </Button>
           </div>
@@ -130,6 +160,8 @@ function ChildModal() {
 
 const ReadRoomInfosModal: React.FC = () => {
   const [uploadedFiles, setUploadedFiles] = React.useState<FileObject[]>([]);
+  const [itemArea, setItemArea] = React.useState<FileObject[]>([]);
+  const [itemPeople, setItemPeople] = React.useState<FileObject[]>([]);
   const [open, setOpen] = React.useState(false);
   const handleOpen = () => {
     setOpen(true);
@@ -140,7 +172,10 @@ const ReadRoomInfosModal: React.FC = () => {
 
   return (
     <div>
-      <Button onClick={handleOpen} className="absolute right-6 shadow-none">
+      <Button
+        onClick={handleOpen}
+        className="absolute right-5 top-6 shadow-none"
+      >
         <QuestionMarkCircleIcon className="w-9 hover:text-oasis-aqua-400 dark:text-bosch-dark-gray-100 dark:hover:text-oasis-aqua-300" />
       </Button>
       <Modal
@@ -165,11 +200,32 @@ const ReadRoomInfosModal: React.FC = () => {
                 <p className="border-b border-bosch-light-gray-200 px-1 dark:border-bosch-dark-gray-300">
                   Areas
                 </p>
+                <div className="flex flex-wrap">
+                  <ItemRoom title={"ETS"} />
+                  <ItemRoom title={"EXEMPLO"} />
+                  <ItemRoom title={"DSO"} />
+                </div>
+                <div className="max-h-28 overflow-y-scroll">
+                  {itemArea.map((item) => (
+                    <ItemRoom />
+                  ))}
+                </div>
               </div>
               <div className="w-3/5">
                 <p className="border-b border-bosch-light-gray-200 px-1 dark:border-bosch-dark-gray-300">
                   People
                 </p>
+                <div className="flex flex-wrap">
+                  <ItemRoom title={"raissa"} />
+                  <ItemRoom title={"lucas"} />
+                  <ItemRoom title={"gustavo"} />
+                  <ItemRoom title={"livea"} />
+                </div>
+                <div className="max-h-28 overflow-y-scroll">
+                  {itemPeople.map((item) => (
+                    <ItemRoom />
+                  ))}
+                </div>
               </div>
             </div>
             <div className="flex justify-between border-b border-bosch-light-gray-200 px-1 dark:border-bosch-dark-gray-300">
@@ -188,8 +244,11 @@ const ReadRoomInfosModal: React.FC = () => {
             </div>
           </div>
           <div className="flex justify-end space-x-3 pt-10">
-            <Button onClick={handleClose} className="border border-bosch-light-gray-200 text-bosch-light-gray-300 hover:bg-bosch-light-gray-100 dark:border-bosch-dark-gray-300   dark:hover:bg-bosch-dark-gray-400">
-              Cancel
+            <Button
+              onClick={handleClose}
+              className="border border-bosch-light-gray-200 text-bosch-light-gray-300 hover:bg-bosch-light-gray-100 dark:border-bosch-dark-gray-300   dark:hover:bg-bosch-dark-gray-400"
+            >
+              Close
             </Button>
             <ChildModal />
           </div>
