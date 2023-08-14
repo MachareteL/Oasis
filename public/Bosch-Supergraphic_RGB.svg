@@ -119,30 +119,30 @@
 	</defs>
 	<style>
 		.s0 { fill: url(#g1) } 
-		.s1 { fill: url(#g2) } 
-		.s2 { opacity: .8;fill: url(#g3) } 
-		.s3 { fill: url(#g4) } 
-		.s4 { fill: url(#g5) } 
-		.s5 { fill: #af1917 } 
-		.s6 { fill: url(#g6) } 
-		.s7 { fill: #931813 } 
-		.s8 { fill: #b12638 } 
-		.s9 { fill: #942331 } 
-		.s10 { fill: #d51317 } 
-		.s11 { opacity: .5;fill: url(#g7) } 
-		.s12 { fill: url(#g8) } 
-		.s13 { fill: #169a39 } 
-		.s14 { fill: url(#g9) } 
-		.s15 { opacity: .7;fill: url(#g10) } 
-		.s16 { opacity: .3;fill: #283587 } 
-		.s17 { opacity: .8;fill: url(#g11) } 
-		.s18 { opacity: .7;fill: url(#g12) } 
-		.s19 { fill: url(#g13) } 
-		.s20 { fill: url(#g14) } 
+		.s1 { mix-blend-mode: luminosity;fill: url(#g2) } 
+		.s2 { opacity: .8;mix-blend-mode: luminosity;fill: url(#g3) } 
+		.s3 { mix-blend-mode: luminosity;fill: url(#g4) } 
+		.s4 { mix-blend-mode: luminosity;fill: url(#g5) } 
+		.s5 { mix-blend-mode: luminosity;fill: #af1917 } 
+		.s6 { mix-blend-mode: luminosity;fill: url(#g6) } 
+		.s7 { mix-blend-mode: luminosity;fill: #931813 } 
+		.s8 { mix-blend-mode: luminosity;fill: #b12638 } 
+		.s9 { mix-blend-mode: luminosity;fill: #942331 } 
+		.s10 { mix-blend-mode: luminosity;fill: #d51317 } 
+		.s11 { opacity: .5;mix-blend-mode: luminosity;fill: url(#g7) } 
+		.s12 { mix-blend-mode: luminosity;fill: url(#g8) } 
+		.s13 { mix-blend-mode: luminosity;fill: #169a39 } 
+		.s14 { mix-blend-mode: luminosity;fill: url(#g9) } 
+		.s15 { opacity: .7;mix-blend-mode: luminosity;fill: url(#g10) } 
+		.s16 { opacity: .3;mix-blend-mode: luminosity;fill: #283587 } 
+		.s17 { opacity: .8;mix-blend-mode: luminosity;fill: url(#g11) } 
+		.s18 { opacity: .7;mix-blend-mode: luminosity;fill: url(#g12) } 
+		.s19 { mix-blend-mode: luminosity;fill: url(#g13) } 
+		.s20 { mix-blend-mode: luminosity;fill: url(#g14) } 
 	</style>
 	<g id="Layer">
 		<path id="Layer" class="s0" d="m0 0h1300v551h-1300z"/>
-		<g id="Layer" style="opacity: .8;mix-blend-mode: luminosity">
+		<g id="Layer" style="opacity: .8">
 			<path id="Layer" class="s1" d="m210.3 551h160.3l-55.8-275.5z"/>
 			<path id="Layer" class="s2" d="m643.7 0h-81.2l-44.1 275.5 40.1 275.5h85.2z"/>
 			<path id="Layer" class="s3" d="m376.5 0l-61.7 275.5 55.8 275.5 85.8-275.5z"/>

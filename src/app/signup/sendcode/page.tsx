@@ -9,7 +9,7 @@ import { BoschSansLight } from "@/fonts/fonts";
 
 interface Props {}
 
-const ChangePassword: NextPage<Props> = ({}) => {
+const SendCode: NextPage<Props> = ({}) => {
   return (
     <section className="relative h-screen">
       <div className="absolute inset-0 bg-bosch-black">
@@ -23,23 +23,17 @@ const ChangePassword: NextPage<Props> = ({}) => {
         <div className="z-10 flex h-fit w-full flex-col space-y-12 rounded-2xl bg-bosch-white p-20 opacity-90 dark:bg-bosch-dark-gray-400 md:ml-auto md:mt-0 md:w-2/3 lg:w-2/4 xl:w-5/12">
           <div className="flex flex-col pt-4">
             <Oasis />
-            <h1 className={`flex justify-center text-xl sm:text-2xl ${BoschSansLight.className}`}>
+            <h1 className={`flex justify-center text-xl font-thin dark:text-bosch-light-gray-100 sm:text-2xl ${BoschSansLight.className}`}>
               Change Password
             </h1>
           </div>
           <form className="space-y-14">
             <div className="space-y-4">
+              <p className={`${BoschSansLight.className}`}>
+                A link will be sent to the email below to change your password.
+              </p>
               <div>
                 <InputStandart placeholder="E-mail" name="email" />
-              </div>
-              <div>
-                <InputStandart placeholder="New Password" name="newPassword" />
-              </div>
-              <div>
-                <InputStandart
-                  placeholder="Confirm Password"
-                  name="confirmPassword"
-                />
               </div>
             </div>
 
@@ -58,4 +52,4 @@ const ChangePassword: NextPage<Props> = ({}) => {
   );
 };
 
-export default ChangePassword;
+export default SendCode;
