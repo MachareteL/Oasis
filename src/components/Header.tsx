@@ -5,6 +5,7 @@ import BoschHeader from "../../public/bosch-supergraphic-oasis.svg";
 import BoschBlackLogo from "../../public/BoschBlack.svg";
 import { usePathname } from "next/navigation";
 import Menu from "./Menu";
+import Link from 'next/link'
 
 export default function Header() {
   const pathname = usePathname();
@@ -15,15 +16,15 @@ export default function Header() {
   return (
     <div>
       <Menu />
-
+      
       <Image
         src={BoschHeader}
         alt="hyperGraphic"
         className="h-3 w-screen object-cover"
       />
-      <span className="flex items-center justify-between pr-12">
+      <Link href={"/"} className="flex items-center justify-between pr-12 w-fit">
         <Image src={BoschBlackLogo} alt="Logo" className="dark:invert" />
-      </span>
+      </Link>
     </div>
   );
 }
