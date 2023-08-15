@@ -1,21 +1,76 @@
+"use client";
 import InputStandart from "@/components/InputStandart";
+import Message from "@/components/Message";
 import ReadRoomInfosModal from "@/components/ReadRoomInfosModal";
+import axiosGlobal from "@/lib/axios";
 import { PaperAirplaneIcon } from "@heroicons/react/24/outline";
+import axios from "axios";
 import type { NextPage } from "next";
+import { useState } from "react";
 
 const Page: NextPage = () => {
+  const [msgCache, setMsgCache] = useState<MessageProps[]>();
+  const [currentMsg, setCurrentMsg] = useState("");
+  const [loading, setLoading] = useState(false);
+
+  async function handleSendQuestion(e: React.FormEvent) {
+    e.preventDefault();
+    setMsgCache([
+      ...(msgCache ?? []),
+      {
+        author: "user",
+        content: currentMsg,
+        createdAt: new Date(),
+        createdByCurrentUser: true,
+      },
+    ]);
+    setCurrentMsg("");
+    const { data } = await axios.post("/api/postQuery", {
+      data: { question: currentMsg },
+    });
+    setMsgCache([
+      ...(msgCache ?? []),
+      {
+        author: "Oasis",
+        content: data.answer,
+        createdAt: new Date(),
+        createdByCurrentUser: false,
+      },
+    ]);
+    console.log(data);
+  }
+
+  function marketing() {
+    console.log(msgCache);
+  }
   return (
-    <div>
+    <>
       <ReadRoomInfosModal />
-      <form className="absolute bottom-0 flex w-full justify-center border-t border-bosch-light-gray-200 px-5 pb-4 pt-3 dark:border-bosch-dark-gray-300">
-        <div className="flex w-11/12 max-w-5xl items-center space-x-6">
-          <InputStandart placeholder="Type here" />
-          <button className="w-7">
+      <div className="container mx-auto flex h-screen flex-col justify-end px-5 pb-4 pt-3">
+        <button onClick={marketing}>LOG</button>
+        <ul className="mb-4 space-y-4">
+          {msgCache?.map((message, index) => (
+            <Message {...message} loading={loading} key={index} />
+          ))}
+        </ul>
+        <form
+          onSubmit={handleSendQuestion}
+          className="flex w-full space-x-6 border-t border-bosch-light-gray-200  dark:border-bosch-dark-gray-300"
+        >
+          <InputStandart
+            placeholder="Type here"
+            onChange={(e) => {
+              setCurrentMsg(e.target.value);
+            }}
+            value={currentMsg}
+            disabled={loading}
+          />
+          <button className="w-7" type="submit" disabled={loading}>
             <PaperAirplaneIcon className="text-bosch-dark-gray-200 hover:text-oasis-aqua-400 dark:text-bosch-dark-gray-200 dark:hover:text-oasis-aqua-300" />
           </button>
-        </div>
-      </form>
-    </div>
+        </form>
+      </div>
+    </>
   );
 };
 

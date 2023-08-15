@@ -64,7 +64,8 @@ export default function InputStandart({
         label={placeholder}
         onChange={onChange}
         variant="outlined"
-        inputProps={{ className: `text-bosch-black  dark:text-bosch-dark-gray-100`, ...attr }}
+        value={value}
+        inputProps={{ className:`text-bosch-black dark:text-bosch-dark-gray-100`, ...attr }}
         className="w-full"
         size="small"
       />
