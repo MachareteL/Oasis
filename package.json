@@ -1,6 +1,9 @@
 {
   "name": "oasis",
   "version": "0.1.0",
+  "prisma": {
+    "seed": "ts-node prisma/seed.mjs"
+  },
   "private": true,
   "scripts": {
     "dev": "next dev",
@@ -9,17 +12,37 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "@types/node": "20.4.4",
+    "@auth/prisma-adapter": "^1.0.1",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
+    "@heroicons/react": "^2.0.18",
+    "@material/textfield": "^14.0.0",
+    "@mui/material": "^5.14.2",
+    "@next-auth/prisma-adapter": "^1.0.7",
+    "@prisma/client": "^5.0.0",
     "@types/react": "18.2.16",
     "@types/react-dom": "18.2.7",
-    "autoprefixer": "10.4.14",
+    "axios": "^1.4.0",
+    "bcrypt": "^5.1.0",
     "eslint": "8.45.0",
     "eslint-config-next": "13.4.12",
     "next": "13.4.12",
-    "postcss": "8.4.27",
+    "next-auth": "^4.22.3",
     "react": "18.2.0",
     "react-dom": "18.2.0",
-    "tailwindcss": "3.3.3",
-    "typescript": "5.1.6"
+    "react-infinite-scroll-component": "^6.1.0"
+  },
+  "devDependencies": {
+    "@types/bcrypt": "^5.0.0",
+    "@types/node": "^20.4.8",
+    "autoprefixer": "^10.4.14",
+    "concurrently": "^8.2.0",
+    "postcss": "^8.4.27",
+    "prettier": "^3.0.0",
+    "prettier-plugin-tailwindcss": "^0.4.1",
+    "prisma": "^5.0.0",
+    "tailwindcss": "^3.3.3",
+    "ts-node": "^10.9.1",
+    "typescript": "^5.1.6"
   }
 }
