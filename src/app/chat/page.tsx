@@ -6,48 +6,57 @@ import axiosGlobal from "@/lib/axios";
 import { PaperAirplaneIcon } from "@heroicons/react/24/outline";
 import axios from "axios";
 import type { NextPage } from "next";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 const Page: NextPage = () => {
   const [msgCache, setMsgCache] = useState<MessageProps[]>();
+  const [msgCacheLocal, setMsgCacheLocal] = useState<MessageProps>();
   const [currentMsg, setCurrentMsg] = useState("");
   const [loading, setLoading] = useState(false);
-
   async function handleSendQuestion(e: React.FormEvent) {
     e.preventDefault();
-    setMsgCache([
-      ...(msgCache ?? []),
-      {
-        author: "user",
-        content: currentMsg,
-        createdAt: new Date(),
-        createdByCurrentUser: true,
-      },
-    ]);
+    setMsgCacheLocal({
+      author: "user",
+      content: currentMsg,
+      createdAt: new Date(),
+      createdByCurrentUser: true,
+    });
     setCurrentMsg("");
     const { data } = await axios.post("/api/postQuery", {
       data: { question: currentMsg },
     });
-    setMsgCache([
-      ...(msgCache ?? []),
-      {
-        author: "Oasis",
-        content: data.answer,
-        createdAt: new Date(),
-        createdByCurrentUser: false,
-      },
-    ]);
-    console.log(data);
-  }
+    setMsgCacheLocal({
+      author: "Oasis",
+      content: data.answer,
+      createdAt: new Date(),
+      createdByCurrentUser: false,
+    });
+    // setMsgCache([
+    //   ...(msgCache ?? []),
+    //   {
+    //     author: "Oasis",
+    //     content: data.answer,
+    //     createdAt: new Date(),
+    //     createdByCurrentUser: false,
+    //   },
+    // ]);
+    // setMsgCacheLocal([
 
+    // ])
+    // console.log(data);
+  }
+  useEffect(() => {
+    if (!msgCacheLocal) return;
+    setMsgCache([...(msgCache ?? []), msgCacheLocal]);
+  }, [msgCacheLocal]);
   function marketing() {
     console.log(msgCache);
   }
   return (
     <>
       <ReadRoomInfosModal />
-      <div className="container mx-auto flex h-screen flex-col justify-end px-5 pb-4 pt-3">
-        <button onClick={marketing}>LOG</button>
+      <div className="container mx-auto flex h-screen absolute top-0 flex-1 flex-col justify-end px-5 pb-4 pt-3">
+        {/* <button onClick={marketing}>LOG</button> */}
         <ul className="mb-4 space-y-4">
           {msgCache?.map((message, index) => (
             <Message {...message} loading={loading} key={index} />
@@ -55,7 +64,7 @@ const Page: NextPage = () => {
         </ul>
         <form
           onSubmit={handleSendQuestion}
-          className="flex w-full space-x-6 border-t border-bosch-light-gray-200  dark:border-bosch-dark-gray-300"
+          className="flex w-full space-x-6 border-t border-bosch-light-gray-200  pt-5 dark:border-bosch-dark-gray-300"
         >
           <InputStandart
             placeholder="Type here"
