@@ -7,8 +7,10 @@ import {
   PlusIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
-import * as React from "react";
 import ItemRoom from "./ItemRoom";
+import { useState } from "react";
+import axios from "axios";
+import { Autocomplete, TextField } from "@mui/material";
 
 const MAX_COUNT = 10;
 
@@ -16,15 +18,30 @@ interface FileObject {
   name: string;
 }
 
-const CreateRoomModal: React.FC = () => {
-  const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
-  const handleClose = () => setOpen(false);
+function createGroup() {}
 
-  const [uploadedFiles, setUploadedFiles] = React.useState<FileObject[]>([]);
-  const [fileLimit, setFileLimit] = React.useState(false);
-  const [itemArea, setItemArea] = React.useState<FileObject[]>([]);
-  const [itemPeople, setItemPeople] = React.useState<FileObject[]>([]);
+export default function CreateRoomModal() {
+  const [open, setOpen] = useState(false);
+  function handleOpen() {
+    setOpen(true);
+  }
+  function handleClose() {
+    setOpen(false);
+  }
+  const [uploadedFiles, setUploadedFiles] = useState<FileObject[]>([]);
+  const [userList, setUserList] = useState([]);
+  const [itemArea, setItemArea] = useState<FileObject[]>([]);
+  const [itemPeople, setItemPeople] = useState<FileObject[]>([]);
+
+  axios
+    .get<{ users: { email: string; name: string }[] }>("/api/getPublicUserInfo")
+    .then(({ data }) => {
+      let users: any = [];
+      data.users.map(({ name }) => {
+        users.push({ label: name, value: name });
+      });
+      setUserList(users);
+    });
 
   const handleUploadFiles = (files: FileObject[]) => {
     const uploaded: FileObject[] = [...uploadedFiles];
@@ -56,7 +73,7 @@ const CreateRoomModal: React.FC = () => {
     handleUploadFiles(fileObjects);
   };
 
-  const remover = (file: FileObject) => {
+  const removeFiles = (file: FileObject) => {
     const files = uploadedFiles.filter((element) => element !== file);
     setUploadedFiles(files);
   };
@@ -77,7 +94,7 @@ const CreateRoomModal: React.FC = () => {
         className="flex items-center justify-center"
       >
         <div className="m-10 flex w-full max-w-2xl flex-col rounded-2xl bg-bosch-white px-8 py-5 dark:bg-bosch-dark-gray-500 sm:px-12 sm:py-8">
-          <p className={"text-lg font-bold  "}>Create a New Group</p>
+          <p className={"text-lg font-bold"}>Create a New Group</p>
           <h1 className="-mx-2 mb-5 mt-3 h-0.5 bg-bosch-light-gray-100 dark:bg-bosch-dark-gray-300" />
           <div className="space-y-5">
             <InputStandart placeholder="Title" />
@@ -86,9 +103,9 @@ const CreateRoomModal: React.FC = () => {
               <div className="w-2/5  space-y-2">
                 <InputStandart placeholder="Areas" />
                 <div className="flex flex-wrap">
-                  <ItemRoom title={"ETS"}/>
-                  <ItemRoom title={"EXEMPLO"}/>
-                  <ItemRoom title={"DSO"}/>
+                  <ItemRoom title={"ETS"} />
+                  <ItemRoom title={"EXEMPLO"} />
+                  <ItemRoom title={"DSO"} />
                 </div>
                 <div className="max-h-28 overflow-y-scroll">
                   {itemArea.map((item) => (
@@ -97,12 +114,18 @@ const CreateRoomModal: React.FC = () => {
                 </div>
               </div>
               <div className="w-3/5 space-y-2">
-                <InputStandart placeholder="People" />
+                <Autocomplete
+                  disablePortal
+                  options={userList}
+                  renderInput={(params) => (
+                    <TextField {...params} placeholder="people" />
+                  )}
+                />
                 <div className="flex flex-wrap">
-                  <ItemRoom title={"raissa"}/>
-                  <ItemRoom title={"lucas"}/>
-                  <ItemRoom title={"gustavo"}/>
-                  <ItemRoom title={"livea"}/>
+                  <ItemRoom title={"raissa"} />
+                  <ItemRoom title={"lucas"} />
+                  <ItemRoom title={"gustavo"} />
+                  <ItemRoom title={"livea"} />
                 </div>
                 <div className="max-h-28 overflow-y-scroll">
                   {itemPeople.map((item) => (
@@ -136,7 +159,7 @@ const CreateRoomModal: React.FC = () => {
                     {file.name}
                     <button
                       onClick={() => {
-                        remover(file);
+                        removeFiles(file);
                       }}
                     >
                       <XMarkIcon className=" w-4 text-bosch-light-gray-300 hover:text-oasis-aqua-400 dark:hover:text-oasis-aqua-300" />
@@ -161,6 +184,4 @@ const CreateRoomModal: React.FC = () => {
       </Modal>
     </div>
   );
-};
-
-export default CreateRoomModal;
+}
