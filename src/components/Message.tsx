@@ -9,7 +9,7 @@ export default function Message({
   return (
     <li
       className={`${
-        createdByCurrentUser ? "text-end" : "text-start bg-oasis-aqua-100"
+        createdByCurrentUser ? "text-end" : "text-start bg-bosch-light-gray-100"
       } border border-bosch-light-gray-200 px-4 py-2`}
     >
       {!loading ? content : <MessagePlaceholder />}
