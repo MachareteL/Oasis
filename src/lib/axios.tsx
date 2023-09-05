@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const axiosGlobal = axios.create({
-  baseURL: "http://127.0.0.1:5000/",
+  baseURL: "http://10.234.90.31:5000/",
   timeout: 1000 * 1200,
 });
 

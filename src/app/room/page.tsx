@@ -9,7 +9,7 @@ import { getServerSession } from "next-auth/next";
 import { authOptions } from "@/lib/auth";
 import CreateRoomModal from "@/components/CreateRoomModal";
 import JoinRoomModal from "@/components/JoinRoomModal";
-
+import { redirect } from "next/navigation";
 async function getData() {
   const session = await getServerSession(authOptions);
   const user = session?.user;
@@ -49,6 +49,11 @@ async function getData() {
 
 const Room = async () => {
   const room = await getData();
+  const session = await getServerSession(authOptions);
+  if (!session?.user) {
+    return redirect("/signup");
+  }
+
   if (!room) {
     return;
   }
