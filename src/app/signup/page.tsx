@@ -10,25 +10,21 @@ import Oasis from "@/components/Oasis";
 import Link from "next/link";
 import { BoschSansBold, BoschSansLight, BoschSansMedium } from "@/fonts/fonts";
 
-interface Props {}
+interface Props { }
 
-const Login: NextPage<Props> = ({}) => {
+const Login: NextPage<Props> = ({ }) => {
   const { data, status } = useSession();
   console.log(data, status);
   const [user, setUser] = useState({ email: "", password: "" });
-  async function handleLogin(event: React.FormEvent) {
+  function handleLogin(event: React.FormEvent) {
     event.preventDefault();
     console.log("onsubmit");
 
-    signIn("credentials", {
+    void signIn("credentials", {
       email: user.email,
       password: user.password,
-      redirect: false,
-    }).then(async (res) => {
-      if (res?.error == null && res?.ok == true) {
-        console.log("LOGADO PARCEIRO!");
-      }      
-    });
+      callbackUrl: '/'
+    })
   }
   return (
     <section className="relative h-screen">

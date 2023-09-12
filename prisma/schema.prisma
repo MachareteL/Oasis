@@ -20,8 +20,6 @@ model User {
   Group    Group?     @relation(fields: [groupId], references: [id])
   groupId  String?
   Messages Messages[]
-  Room     Room?      @relation(fields: [roomId], references: [id])
-  roomId   String?
 }
 
 model Group {
@@ -39,16 +37,15 @@ model Messages {
   content   String
   User      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   createdAt DateTime
-  Group     Group    @relation(fields: [groupId], references: [id], onDelete: Cascade)
-
+  Group     Group  @relation(fields: [groupId], references: [id], onDelete: Cascade)
   @@unique([userId, groupId])
 }
 
-model Room {
-  id          String @id @default(cuid())
-  title       String
-  description String
-  area        String
-  people      User[]
-  code        String
-}
+// model Room {
+//   id          String @id @default(cuid())
+//   title       String
+//   description String
+//   area        String
+//   people      User[]
+//   code        String
+// }

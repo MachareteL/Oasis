@@ -18,7 +18,7 @@ interface FileObject {
   name: string;
 }
 
-function createGroup() {}
+function createGroup() { }
 
 export default function CreateRoomModal() {
   const [open, setOpen] = useState(false);
