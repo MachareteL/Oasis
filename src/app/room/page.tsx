@@ -10,7 +10,7 @@ import { authOptions } from "@/lib/auth";
 import CreateRoomModal from "@/components/CreateRoomModal";
 import JoinRoomModal from "@/components/JoinRoomModal";
 import { redirect } from "next/navigation";
-import ComponenteTeste from "@/components/componenteTeste";
+
 async function getData() {
   const session = await getServerSession(authOptions);
   const user = session?.user;
@@ -59,11 +59,11 @@ const Room = async () => {
     return;
   }
 
+  console.log(room);
   
 
   return (
     <div>
-      <ComponenteTeste />
       <CreateRoomModal />
       <JoinRoomModal />
       <div className=" flex flex-col items-center space-y-2 p-20">

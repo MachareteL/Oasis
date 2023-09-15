@@ -6,10 +6,10 @@ export async function POST() {
 
   await prisma.group.create({
     data: {
-      area: "",
-      name: "",
+      area: "Cap/ETS",
+      name: "Grupo teste",
       Messages: {},
-      description: "",
+      description: "Primeiro grupo de teste!",
     },
   });
 
