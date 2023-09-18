@@ -42,6 +42,7 @@ export default function CreateRoomModal() {
 
     axios.post('/api/room/create', formData).then(({ data }) => {
       console.log(data);
+      
     }).catch((err) => {
       console.log(err);
     })
