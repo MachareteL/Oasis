@@ -22,6 +22,7 @@ function createGroup() { }
 
 export default function CreateRoomModal() {
   const [open, setOpen] = useState(false);
+  const [roomData, setRoomData] = useState({ title: '', description: '', areas: "CaP/ETS", members: ['lucas@login.com'] })
   function handleOpen() {
     setOpen(true);
   }
@@ -33,8 +34,21 @@ export default function CreateRoomModal() {
   const [itemArea, setItemArea] = useState<FileObject[]>([]);
   const [itemPeople, setItemPeople] = useState<FileObject[]>([]);
 
-  axios
-    .get<{ users: { email: string; name: string }[] }>("/api/getPublicUserInfo")
+  function createRoom() {
+    const formData = new FormData()
+    formData.append('name', roomData.title);
+    formData.append("description", roomData.title);
+    formData.append('area', roomData.areas)
+
+    axios.post('/api/room/create', formData).then(({ data }) => {
+      console.log(data);
+    }).catch((err) => {
+      console.log(err);
+    })
+
+  }
+
+  axios.get<{ users: { email: string; name: string }[] }>("/api/getPublicUserInfo")
     .then(({ data }) => {
       let users: any = [];
       data.users.map(({ name }) => {
@@ -97,11 +111,15 @@ export default function CreateRoomModal() {
           <p className={"text-lg font-bold"}>Create a New Group</p>
           <h1 className="-mx-2 mb-5 mt-3 h-0.5 bg-bosch-light-gray-100 dark:bg-bosch-dark-gray-300" />
           <div className="space-y-5">
-            <InputStandart placeholder="Title" />
-            <InputStandart placeholder="Description" />
+            <InputStandart placeholder="Title" onChange={({ target }) => {
+              setRoomData({ ...roomData, title: target.value })
+            }} />
+            <InputStandart placeholder="Description" onChange={({ target }) => {
+              setRoomData({ ...roomData, description: target.value })
+            }} />
             <div className="flex justify-between space-x-3">
               <div className="w-2/5  space-y-2">
-                <InputStandart placeholder="Areas" />
+                <InputStandart placeholder="Area" />
                 <div className="flex flex-wrap">
                   <ItemRoom title={"ETS"} />
                   <ItemRoom title={"EXEMPLO"} />
@@ -109,7 +127,7 @@ export default function CreateRoomModal() {
                 </div>
                 <div className="max-h-28 overflow-y-scroll">
                   {itemArea.map((item) => (
-                    <ItemRoom />
+                    <ItemRoom key={item.name} />
                   ))}
                 </div>
               </div>
@@ -118,7 +136,7 @@ export default function CreateRoomModal() {
                   disablePortal
                   options={userList}
                   renderInput={(params) => (
-                    <TextField {...params} placeholder="people" />
+                    <TextField {...params} placeholder="people" key={params.id} />
                   )}
                 />
                 <div className="flex flex-wrap">
@@ -128,8 +146,8 @@ export default function CreateRoomModal() {
                   <ItemRoom title={"livea"} />
                 </div>
                 <div className="max-h-28 overflow-y-scroll">
-                  {itemPeople.map((item) => (
-                    <ItemRoom />
+                  {itemPeople.map((item, index) => (
+                    <ItemRoom key={`itemRoom-${index}`} />
                   ))}
                 </div>
               </div>
@@ -176,8 +194,8 @@ export default function CreateRoomModal() {
             >
               Cancel
             </Button>
-            <Button className=" bg-oasis-aqua-400 text-bosch-white hover:bg-oasis-aqua-500">
-              Create
+            <Button onClick={createRoom} className=" bg-oasis-aqua-400 text-bosch-white hover:bg-oasis-aqua-500">
+              Createa
             </Button>
           </div>
         </div>

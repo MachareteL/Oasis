@@ -38,7 +38,7 @@ const JoinRoomModal: React.FC = () => {
             >
               Cancel
             </Button>
-            <Button className=" bg-oasis-aqua-400 text-bosch-white hover:bg-oasis-aqua-500">
+            <Button className="bg-oasis-aqua-400 text-bosch-white hover:bg-oasis-aqua-500">
               Create
             </Button>
           </div>
