@@ -1,10 +1,11 @@
 import type { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import { PrismaAdapter } from "@next-auth/prisma-adapter";
-import prisma from "./prisma";
+import prisma from "@/adapters/prisma";
 import { compare } from "bcrypt";
+import NextAuth from "next-auth";
 
-export const authOptions: NextAuthOptions = {
+const authOptions: NextAuthOptions = {
   session: {
     strategy: "jwt",
   },
@@ -26,19 +27,20 @@ export const authOptions: NextAuthOptions = {
           return null;
         }
         console.log(credentials);
-        
+
         const user = await prisma.user.findUnique({
           where: {
             email: credentials.email,
           },
         });
+
         
         if (!user) {
           return null;
         }
         const isValid = await compare(credentials.password, user.password);
         console.log(isValid);
-        
+
         if (!isValid) {
           throw new Error("Wrong credentials. Try again.");
         }
@@ -48,3 +50,5 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
 };
+
+export default NextAuth(authOptions);

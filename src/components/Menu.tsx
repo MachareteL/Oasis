@@ -1,4 +1,3 @@
-"use client";
 import { BoschSansLight } from "@/fonts/fonts";
 import { Drawer } from "@mui/material";
 import React, { useState } from "react";
@@ -16,7 +15,7 @@ export default function Menu() {
   };
 
   return (
-    <div className="absolute left-0 top-28 h-32 w-9 -translate-x-5 cursor-pointer transition-all hover:translate-x-0 dark:bg-bosch-dark-gray-400 z-50">
+    <div className="absolute left-0 top-28 z-50 h-32 w-9 -translate-x-5 cursor-pointer transition-all hover:translate-x-0 dark:bg-bosch-dark-gray-400">
       <div
         className="relative h-full w-full overflow-hidden rounded-md border after:absolute after:right-0 after:top-0 after:h-full after:w-2 after:bg-gradient-to-b after:from-oasis-standard-100 after:from-10% after:to-oasis-standard-500 dark:border-none"
         onClick={() => setOpen(true)}
