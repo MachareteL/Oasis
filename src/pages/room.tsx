@@ -3,55 +3,22 @@ import {
   BoschSansLight,
   BoschSansRegular,
 } from "@/fonts/fonts";
-import RoomCard from "@/components/RoomCard";
-import prisma from "@/lib/prisma";
-import { getServerSession } from "next-auth/next";
-import { authOptions } from "@/lib/auth";
-import CreateRoomModal from "@/components/CreateRoomModal";
+import RoomCard from "@/components/Roomcard";
+import CreateRoomModal from "@/components/CreateGroupModal";
 import JoinRoomModal from "@/components/JoinRoomModal";
+import { Iaxios } from "@/adapters/axios";
+import { useEffect, useState } from "react";
 
-async function getData() {
-  const session = await getServerSession(authOptions);
-  const user = session?.user;
-  if (!user) {
-    return [];
-  }
+const Room = () => {
+  const [rooms, setRooms] = useState<Room[]>([]);
 
-  const room = await prisma.group.findMany({
-    where: {
-      members: {
-        every: {
-          email: user.email,
-        },
-      },
-    },
-    select: {
-      id: true,
-      area: true,
-      description: true,
-      name: true,
-      _count: {
-        select: {
-          members: true,
-        },
-      },
-    },
-  });
-
-  return room.map((group) => ({
-    id: group.id,
-    area: group.area,
-    name: group.name,
-    description: group.description,
-    members: group._count.members,
-  }));
-}
-
-const Room = async () => {
-  const room = await getData();
-  if (!room) {
-    return;
-  }
+  useEffect(() => {
+    Iaxios.get("/api/group/fetch")
+      .then(({ data }) => {
+        setRooms(data);
+      })
+      .catch((err) => console.log(err));
+  }, []);
 
   return (
     <div>
@@ -75,7 +42,7 @@ const Room = async () => {
         </p>
       </div>
       <div className="container mx-auto flex flex-col gap-4 px-2 sm:grid sm:grid-cols-2 xl:grid-cols-4">
-        {room.map((group) => (
+        {rooms.map((group) => (
           <RoomCard
             borderColorIndex={Math.floor(Math.random() * 15)}
             key={group.id}

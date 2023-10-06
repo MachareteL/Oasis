@@ -1,4 +1,3 @@
-"use client";
 import { TextField, styled } from "@mui/material";
 import React, { DetailedHTMLProps, InputHTMLAttributes } from "react";
 let theme;
@@ -49,7 +48,7 @@ const TextInput = styled(TextField)(
       },
 );
 
-export default function InputStandart({
+export default function InputStandard({
   placeholder,
   type,
   value,
@@ -65,7 +64,10 @@ export default function InputStandart({
         onChange={onChange}
         variant="outlined"
         value={value}
-        inputProps={{ className:`text-bosch-black dark:text-bosch-dark-gray-100`, ...attr }}
+        inputProps={{
+          className: `text-bosch-black dark:text-bosch-dark-gray-100`,
+          ...attr,
+        }}
         className="w-full"
         size="small"
       />

@@ -1,5 +1,3 @@
-"use client";
-
 import { SessionProvider } from "next-auth/react";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 

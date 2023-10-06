@@ -1,8 +1,5 @@
-"use client";
-import InputStandart from "@/components/InputStandart";
+import InputStandard from "@/components/InputStandard";
 import Message from "@/components/Message";
-import ReadRoomInfosModal from "@/components/ReadRoomInfosModal";
-import axiosGlobal from "@/lib/axios";
 import { PaperAirplaneIcon } from "@heroicons/react/24/outline";
 import axios from "axios";
 import type { NextPage } from "next";
@@ -54,7 +51,6 @@ const Page: NextPage = () => {
   }
   return (
     <>
-      <ReadRoomInfosModal />
       <div className="container mx-auto flex h-[90vh] flex-col justify-end overflow-hidden">
         {/* <button onClick={marketing}>LOG</button> */}
         <ul className="">
@@ -66,7 +62,7 @@ const Page: NextPage = () => {
           onSubmit={handleSendQuestion}
           className="flex space-x-6 border-t border-bosch-light-gray-200 pt-5 dark:border-bosch-dark-gray-300"
         >
-          <InputStandart
+          <InputStandard
             placeholder="Type here"
             onChange={(e) => {
               setCurrentMsg(e.target.value);
