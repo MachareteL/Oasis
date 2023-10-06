@@ -30,11 +30,21 @@ type RoomCardProps = {
   description: string;
   area: string;
   members?: User[] | number;
-  borderColorIndex: number
+  borderColorIndex: number;
 };
 
 type User = {
   id: string;
   name: string;
   email: string;
+};
+
+type Room = {
+  area: string;
+  id: string;
+  name: string;
+  description: string;
+  _count: {
+    members: number;
+  };
 };
