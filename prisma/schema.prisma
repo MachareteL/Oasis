@@ -15,7 +15,7 @@ datasource db {
 model User {
   id       String     @id @default(cuid())
   name     String?
-  email    String?    @unique
+  email    String    @unique
   password String
   Group    Group?     @relation(fields: [groupId], references: [id])
   groupId  String?
@@ -37,7 +37,15 @@ model Messages {
   content   String
   User      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
   createdAt DateTime
-  Group     Group    @relation(fields: [groupId], references: [id], onDelete: Cascade)
-
+  Group     Group  @relation(fields: [groupId], references: [id], onDelete: Cascade)
   @@unique([userId, groupId])
 }
+
+// model Room {
+//   id          String @id @default(cuid())
+//   title       String
+//   description String
+//   area        String
+//   people      User[]
+//   code        String
+// }
