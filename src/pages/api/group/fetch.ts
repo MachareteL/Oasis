@@ -7,9 +7,8 @@ export default async function handler(
   req: NextApiRequest,
   res: NextApiResponse,
 ) {
-  if (req.method != "GET") {
-    return res.status(405).send("METHOD NOT ALLOWED")
-  }
+  if (req.method != "GET") return res.status(405).send("METHOD NOT ALLOWED");
+
   const session = await getServerSession(req, res, authOptions);
   if (!session || !session.user?.email) {
     res.status(401).json({ message: "You must be logged in." });

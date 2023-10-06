@@ -4,7 +4,7 @@ import {
   BoschSansRegular,
 } from "@/fonts/fonts";
 import RoomCard from "@/components/Roomcard";
-import CreateRoomModal from "@/components/CreateRoomModal";
+import CreateRoomModal from "@/components/CreateGroupModal";
 import JoinRoomModal from "@/components/JoinRoomModal";
 import { Iaxios } from "@/adapters/axios";
 import { useEffect, useState } from "react";
@@ -13,7 +13,7 @@ const Room = () => {
   const [rooms, setRooms] = useState<Room[]>([]);
 
   useEffect(() => {
-    Iaxios.get("/api/group/fetchgroups")
+    Iaxios.get("/api/group/fetch")
       .then(({ data }) => {
         setRooms(data);
       })

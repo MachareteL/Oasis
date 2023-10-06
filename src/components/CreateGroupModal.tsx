@@ -7,18 +7,14 @@ import {
   XMarkIcon,
 } from "@heroicons/react/24/outline";
 import ItemRoom from "./ItemRoom";
-import { useState } from "react";
-import axios from "axios";
+import { useState, useEffect } from "react";
 import { Autocomplete, TextField } from "@mui/material";
 import { Iaxios } from "@/adapters/axios";
-
 const MAX_COUNT = 10;
 
 interface FileObject {
   name: string;
 }
-
-function createGroup() {}
 
 export default function CreateRoomModal() {
   const [open, setOpen] = useState(false);
@@ -40,12 +36,11 @@ export default function CreateRoomModal() {
   const [itemPeople, setItemPeople] = useState<FileObject[]>([]);
 
   function createRoom() {
-    const formData = new FormData();
-    formData.append("name", roomData.title);
-    formData.append("description", roomData.title);
-    formData.append("area", roomData.areas);
-
-    Iaxios.post("/api/room/create", formData)
+    Iaxios.post("/api/group/create", {
+      name: roomData.title,
+      description: roomData.description,
+      area: roomData.areas,
+    })
       .then(({ data }) => {
         console.log(data);
       })
@@ -54,19 +49,19 @@ export default function CreateRoomModal() {
       });
   }
 
-  Iaxios.get<{ users: { email: string; name: string }[] }>(
-    "/api/user/public",
-  )
-    .then(({ data }) => {
-      let users: any = [];
-      data.users.map(({ name }) => {
-        users.push({ label: name, value: name });
+  useEffect(() => {
+    Iaxios.get<{ users: { email: string; name: string }[] }>("/api/user/public")
+      .then(({ data }) => {
+        let users: any = [];
+        data.users.map(({ name }) => {
+          users.push({ label: name, value: name });
+        });
+        setUserList(users);
+      })
+      .catch((err) => {
+        console.log(err);
       });
-      setUserList(users);
-    })
-    .catch((err) => {
-      console.log(err);
-    });
+  }, []);
 
   const handleUploadFiles = (files: FileObject[]) => {
     const uploaded: FileObject[] = [...uploadedFiles];
