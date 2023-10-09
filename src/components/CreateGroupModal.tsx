@@ -8,13 +8,69 @@ import {
 } from "@heroicons/react/24/outline";
 import ItemRoom from "./ItemRoom";
 import { useState, useEffect } from "react";
-import { Autocomplete, TextField } from "@mui/material";
+import { Autocomplete, TextField, styled } from "@mui/material";
 import { Iaxios } from "@/adapters/axios";
 const MAX_COUNT = 10;
 
 interface FileObject {
   name: string;
 }
+
+let theme;
+
+if (typeof window !== "undefined") {
+  theme = window.matchMedia("(prefers-color-scheme: dark)").matches;
+}
+
+const AutoCompleteComponent = styled(Autocomplete)(
+  theme
+    ? {
+        "& label.Mui-focused": {
+          color: "#419E98",
+        },
+        "& .MuiInput-underline:after": {
+          borderBottomColor: "#7D8389",
+        },
+        "& .MuiOutlinedInput-root": {
+          "& fieldset": {
+            borderColor: "#7D8389",
+          },
+          "&:hover fieldset": {
+            borderColor: "#7D8389",
+          },
+          "&.Mui-focused fieldset": {
+            borderColor: "#419E98",
+          },
+          "& .MuiSvgIcon-root": {
+            color: "#7D8389",
+          },
+          "& .MuiPopper": {
+            backgroundColor: "#000",
+          },
+          color: "#ffffff",
+        },
+      }
+    : {
+        "& label.Mui-focused": {
+          color: "#18837E",
+        },
+        "& .MuiInput-underline:after": {
+          borderBottomColor: "#D0D4D8",
+        },
+        "& .MuiOutlinedInput-root": {
+          "& fieldset": {
+            borderColor: "#D0D4D8",
+          },
+          "&:hover fieldset": {
+            borderColor: "#D0D4D8",
+          },
+          "&.Mui-focused fieldset": {
+            borderColor: "#18837E",
+          },
+          color: "#000000",
+        },
+      },
+);
 
 export default function CreateRoomModal() {
   const [open, setOpen] = useState(false);
@@ -129,43 +185,24 @@ export default function CreateRoomModal() {
                 setRoomData({ ...roomData, description: target.value });
               }}
             />
-            <div className="flex justify-between space-x-3">
-              <div className="w-2/5  space-y-2">
-                <InputStandart placeholder="Area" />
-                <div className="flex flex-wrap">
-                  <ItemRoom title={"ETS"} />
-                  <ItemRoom title={"EXEMPLO"} />
-                  <ItemRoom title={"DSO"} />
-                </div>
-                <div className="max-h-28 overflow-y-scroll">
-                  {itemArea.map((item) => (
-                    <ItemRoom key={item.name} />
-                  ))}
-                </div>
-              </div>
-              <div className="w-3/5 space-y-2">
-                <Autocomplete
+            <div className="flex justify-between gap-4 ">
+              <div className="w-2/5 space-y-2">
+                <AutoCompleteComponent
                   disablePortal
                   options={userList}
                   renderInput={(params) => (
-                    <TextField
-                      {...params}
-                      placeholder="people"
-                      key={params.id}
-                    />
+                    <TextField {...params} label="Area" />
                   )}
                 />
-                <div className="flex flex-wrap">
-                  <ItemRoom title={"raissa"} />
-                  <ItemRoom title={"lucas"} />
-                  <ItemRoom title={"gustavo"} />
-                  <ItemRoom title={"livea"} />
-                </div>
-                <div className="max-h-28 overflow-y-scroll">
-                  {itemPeople.map((item, index) => (
-                    <ItemRoom key={`itemRoom-${index}`} />
-                  ))}
-                </div>
+              </div>
+              <div className="w-3/5 space-y-2">
+                <AutoCompleteComponent
+                  disablePortal
+                  options={userList}
+                  renderInput={(params) => (
+                    <TextField {...params} label="People" />
+                  )}
+                />
               </div>
             </div>
             <div className="flex flex-col space-y-2">
