@@ -3,11 +3,25 @@ import Modal from "@mui/material/Modal";
 import InputStandart from "./InputStandard";
 import { UserGroupIcon } from "@heroicons/react/24/outline";
 import { useState } from "react";
+import { Iaxios } from "@/adapters/axios";
+import { useRouter } from "next/router";
+
 const JoinRoomModal: React.FC = () => {
   const [open, setOpen] = useState(false);
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
+  const [code, setCode] = useState("");
+  const { reload } = useRouter();
+  function join() {
+    Iaxios.post("/api/group/join", { code })
+      .then(({ data }) => {
+        alert("Joined group successfully");
+        reload();
+      })
+      .catch((e) => {
+        console.log(e);
+      });
+  }
   return (
     <div>
       <Button
@@ -29,7 +43,12 @@ const JoinRoomModal: React.FC = () => {
           <p className="text-md pb-4  ">
             Check with the room creator for the access code and enter it below:
           </p>
-          <InputStandart placeholder="Code" />
+          <InputStandart
+            placeholder="Code"
+            onChange={({ target }) => {
+              setCode(target.value);
+            }}
+          />
           <div className="flex justify-end space-x-3 pt-10">
             <Button
               onClick={handleClose}
@@ -37,8 +56,11 @@ const JoinRoomModal: React.FC = () => {
             >
               Cancel
             </Button>
-            <Button className="bg-oasis-aqua-400 text-bosch-white hover:bg-oasis-aqua-500">
-              Create
+            <Button
+              className="bg-oasis-aqua-400 text-bosch-white hover:bg-oasis-aqua-500"
+              onClick={join}
+            >
+              Join group
             </Button>
           </div>
         </div>

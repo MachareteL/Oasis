@@ -10,6 +10,8 @@ import ItemRoom from "./ItemRoom";
 import { useState, useEffect } from "react";
 import { Autocomplete, TextField } from "@mui/material";
 import { Iaxios } from "@/adapters/axios";
+import { useMutation } from "react-query";
+
 const MAX_COUNT = 10;
 
 interface FileObject {
@@ -35,18 +37,25 @@ export default function CreateRoomModal() {
   const [itemArea, setItemArea] = useState<FileObject[]>([]);
   const [itemPeople, setItemPeople] = useState<FileObject[]>([]);
 
+  const mutation = useMutation({
+    mutationFn: (newGroup: any) =>
+      Iaxios.post("/api/group/create", newGroup).then(({ data }) => data),
+  });
+
   function createRoom() {
-    Iaxios.post("/api/group/create", {
-      name: roomData.title,
-      description: roomData.description,
-      area: roomData.areas,
-    })
-      .then(({ data }) => {
-        console.log(data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+    mutation.mutate(
+      {
+        name: roomData.title,
+        description: roomData.description,
+        area: roomData.areas,
+      },
+      {
+        onSuccess: (data) => {
+          console.log({ data });
+          
+        },
+      },
+    );
   }
 
   useEffect(() => {
@@ -131,7 +140,12 @@ export default function CreateRoomModal() {
             />
             <div className="flex justify-between space-x-3">
               <div className="w-2/5  space-y-2">
-                <InputStandart placeholder="Area" />
+                <InputStandart
+                  placeholder="Area"
+                  onChange={({ target }) => {
+                    setRoomData({ ...roomData, areas: target.value });
+                  }}
+                />
                 <div className="flex flex-wrap">
                   <ItemRoom title={"ETS"} />
                   <ItemRoom title={"EXEMPLO"} />

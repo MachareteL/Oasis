@@ -18,7 +18,7 @@ export default async function handler(
   const rooms = await prisma.group.findMany({
     where: {
       members: {
-        every: {
+        some: {
           email: session.user.email,
         },
       },

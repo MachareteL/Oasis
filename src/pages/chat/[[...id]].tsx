@@ -4,8 +4,14 @@ import { PaperAirplaneIcon } from "@heroicons/react/24/outline";
 import axios from "axios";
 import type { NextPage } from "next";
 import { useEffect, useState } from "react";
+import { useRouter } from "next/router";
 
 const Page: NextPage = () => {
+  const { query } = useRouter();
+  useEffect(() => {
+    console.log(query);
+  }, [query]);
+
   const [msgCache, setMsgCache] = useState<MessageProps[]>();
   const [msgCacheLocal, setMsgCacheLocal] = useState<MessageProps>();
   const [currentMsg, setCurrentMsg] = useState("");
@@ -46,9 +52,7 @@ const Page: NextPage = () => {
     if (!msgCacheLocal) return;
     setMsgCache([...(msgCache ?? []), msgCacheLocal]);
   }, [msgCacheLocal]);
-  function marketing() {
-    console.log(msgCache);
-  }
+
   return (
     <>
       <div className="container mx-auto flex h-[90vh] flex-col justify-end overflow-hidden">

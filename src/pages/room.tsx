@@ -7,18 +7,18 @@ import RoomCard from "@/components/Roomcard";
 import CreateRoomModal from "@/components/CreateGroupModal";
 import JoinRoomModal from "@/components/JoinRoomModal";
 import { Iaxios } from "@/adapters/axios";
-import { useEffect, useState } from "react";
+import { useState } from "react";
+import { useQuery } from "react-query";
 
 const Room = () => {
   const [rooms, setRooms] = useState<Room[]>([]);
-
-  useEffect(() => {
-    Iaxios.get("/api/group/fetch")
-      .then(({ data }) => {
-        setRooms(data);
-      })
-      .catch((err) => console.log(err));
-  }, []);
+  const { data, isSuccess } = useQuery({
+    queryKey: "fetchGroups",
+    queryFn: () => Iaxios.get("/api/group/fetch").then(({ data }) => data),
+    onSuccess: (data) => {
+      setRooms(data);
+    },
+  });
 
   return (
     <div>

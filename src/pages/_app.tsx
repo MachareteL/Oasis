@@ -1,8 +1,7 @@
 import "@/styles/globals.css";
 import type { AppProps } from "next/app";
-
 import { SessionProvider } from "next-auth/react";
-import { ThemeMuiProvider } from "@/providers/providers";
+import { ReactQueryProvider, ThemeMuiProvider } from "@/providers/providers";
 import Header from "@/components/Header";
 
 export default function App({
@@ -12,8 +11,10 @@ export default function App({
   return (
     <ThemeMuiProvider>
       <SessionProvider session={session}>
-        <Header />
-        <Component {...pageProps} />
+        <ReactQueryProvider>
+          <Header />
+          <Component {...pageProps} />
+        </ReactQueryProvider>
       </SessionProvider>
     </ThemeMuiProvider>
   );

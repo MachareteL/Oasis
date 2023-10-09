@@ -26,6 +26,7 @@ type MessageProps = {
 };
 
 type RoomCardProps = {
+  id: string;
   name: string;
   description: string;
   area: string;
