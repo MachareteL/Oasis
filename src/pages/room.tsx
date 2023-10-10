@@ -26,7 +26,7 @@ const Room = () => {
       <JoinRoomModal />
       <div className=" flex flex-col items-center space-y-2 p-20">
         <div className="flex flex-col sm:flex-row sm:space-x-3">
-          <p className={`text-5xl   ${BoschSansRegular.className}`}>
+          <p className={`text-5xl ${BoschSansRegular.className}`}>
             Welcome to
           </p>
           <h1

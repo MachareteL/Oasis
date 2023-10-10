@@ -52,7 +52,6 @@ export default function CreateRoomModal() {
       {
         onSuccess: (data) => {
           console.log({ data });
-          
         },
       },
     );
@@ -203,7 +202,10 @@ export default function CreateRoomModal() {
               </div>
               <div className="max-h-28 overflow-y-scroll rounded-lg border border-bosch-light-gray-200 dark:border-bosch-dark-gray-300">
                 {uploadedFiles.map((file) => (
-                  <div className="flex justify-between border-b border-bosch-light-gray-200 px-2 pb-1 pt-2 text-sm hover:bg-bosch-light-gray-100   dark:border-bosch-dark-gray-300 dark:hover:bg-bosch-dark-gray-400">
+                  <div
+                    key={file.name}
+                    className="flex justify-between border-b border-bosch-light-gray-200 px-2 pb-1 pt-2 text-sm hover:bg-bosch-light-gray-100 dark:border-bosch-dark-gray-300 dark:hover:bg-bosch-dark-gray-400"
+                  >
                     {file.name}
                     <button
                       onClick={() => {

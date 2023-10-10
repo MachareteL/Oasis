@@ -24,7 +24,7 @@
   },
   "devDependencies": {
     "@types/bcrypt": "^5.0.0",
-    "@types/node": "latest",
+    "@types/node": "^20.8.4",
     "@types/react": "latest",
     "@types/react-dom": "latest",
     "autoprefixer": "latest",
@@ -35,6 +35,10 @@
     "prettier-plugin-tailwindcss": "^0.5.4",
     "prisma": "^5.3.1",
     "tailwindcss": "latest",
-    "typescript": "latest"
+    "ts-node": "^10.9.1",
+    "typescript": "^5.2.2"
+  },
+  "prisma": {
+    "seed": "ts-node --compiler-options {\"module\":\"CommonJS\"} prisma/seed.ts"
   }
 }

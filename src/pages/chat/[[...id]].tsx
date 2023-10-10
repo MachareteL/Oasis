@@ -1,57 +1,62 @@
 import InputStandard from "@/components/InputStandard";
 import Message from "@/components/Message";
 import { PaperAirplaneIcon } from "@heroicons/react/24/outline";
-import axios from "axios";
 import type { NextPage } from "next";
-import { useEffect, useState } from "react";
+import { FormEvent, useEffect, useState } from "react";
 import { useRouter } from "next/router";
+import { useMutation } from "react-query";
+import { Iaxios } from "@/adapters/axios";
+import axios from "axios";
 
 const Page: NextPage = () => {
-  const { query } = useRouter();
-  useEffect(() => {
-    console.log(query);
-  }, [query]);
+  // const { query } = useRouter();
+  // useEffect(() => {
+  //   console.log(query);
+  // }, [query]);
 
   const [msgCache, setMsgCache] = useState<MessageProps[]>();
-  const [msgCacheLocal, setMsgCacheLocal] = useState<MessageProps>();
   const [currentMsg, setCurrentMsg] = useState("");
-  const [loading, setLoading] = useState(false);
-  async function handleSendQuestion(e: React.FormEvent) {
-    e.preventDefault();
-    setMsgCacheLocal({
-      author: "user",
-      content: currentMsg,
-      createdAt: new Date(),
-      createdByCurrentUser: true,
-    });
-    setCurrentMsg("");
-    const { data } = await axios.post("/api/postQuery", {
-      data: { question: currentMsg },
-    });
-    setMsgCacheLocal({
-      author: "Oasis",
-      content: data.answer,
-      createdAt: new Date(),
-      createdByCurrentUser: false,
-    });
-    // setMsgCache([
-    //   ...(msgCache ?? []),
-    //   {
-    //     author: "Oasis",
-    //     content: data.answer,
-    //     createdAt: new Date(),
-    //     createdByCurrentUser: false,
-    //   },
-    // ]);
-    // setMsgCacheLocal([
+  const { mutate, isLoading, data } = useMutation({
+    mutationFn: (newMessage: { question: string }) => {
+      setMsgCache([
+        ...(msgCache ?? []),
+        {
+          author: "Lucas",
+          content: newMessage.question,
+          createdAt: new Date(),
+          createdByCurrentUser: true,
+        },
+      ]);
+      console.log({ msgCache });
 
-    // ])
-    // console.log(data);
-  }
+      return Iaxios.post("/gepete2", newMessage).then(({ data }) => data);
+    },
+  });
+
   useEffect(() => {
-    if (!msgCacheLocal) return;
-    setMsgCache([...(msgCache ?? []), msgCacheLocal]);
-  }, [msgCacheLocal]);
+    if (!data) return;
+    setMsgCache([
+      ...(msgCache ?? []),
+      {
+        author: "Oasis",
+        content: data.answer,
+        createdAt: new Date(),
+        createdByCurrentUser: false,
+      },
+    ]);
+  }, [data]);
+
+  function handleSendQuestion(e: FormEvent) {
+    e.preventDefault();
+    mutate(
+      { question: currentMsg },
+      {
+        // onSuccess: (data) => {
+        //   console.log("on success called");
+        // },
+      },
+    );
+  }
 
   return (
     <>
@@ -59,7 +64,7 @@ const Page: NextPage = () => {
         {/* <button onClick={marketing}>LOG</button> */}
         <ul className="">
           {msgCache?.map((message, index) => (
-            <Message {...message} loading={loading} key={index} />
+            <Message {...message} loading={isLoading} key={index} />
           ))}
         </ul>
         <form
@@ -72,10 +77,10 @@ const Page: NextPage = () => {
               setCurrentMsg(e.target.value);
             }}
             value={currentMsg}
-            disabled={loading}
+            disabled={isLoading}
           />
-          <button className="w-7" type="submit" disabled={loading}>
-            <PaperAirplaneIcon className="text-bosch-dark-gray-200 hover:text-oasis-aqua-400 dark:text-bosch-dark-gray-200 dark:hover:text-oasis-aqua-300" />
+          <button className="w-7" type="submit" disabled={true}>
+            <PaperAirplaneIcon className="text-bosch-dark-gray-200 hover:text-oasis-aqua-400 disabled:cursor-wait dark:text-bosch-dark-gray-200 dark:hover:text-oasis-aqua-300" />
           </button>
         </form>
       </div>
