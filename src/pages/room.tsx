@@ -9,8 +9,12 @@ import JoinRoomModal from "@/components/JoinRoomModal";
 import { Iaxios } from "@/adapters/axios";
 import { useState } from "react";
 import { useQuery } from "react-query";
+import { useSession } from "next-auth/react";
+import { useRouter } from "next/router";
 
 const Room = () => {
+  const { push } = useRouter()
+  const session = useSession({required: true, onUnauthenticated: ()=>{ push('/signup/login')}})
   const [rooms, setRooms] = useState<Room[]>([]);
   const { data, isSuccess } = useQuery({
     queryKey: "fetchGroups",

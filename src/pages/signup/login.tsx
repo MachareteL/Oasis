@@ -17,8 +17,6 @@ const Login: NextPage = () => {
 
   function handleLogin(event: React.FormEvent) {
     event.preventDefault();
-    console.log("onsubmit");
-
     signIn("credentials", {
       email: user.email,
       password: user.password,
