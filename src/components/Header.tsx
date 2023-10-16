@@ -12,10 +12,10 @@ export default function Header() {
     pathname == "/signup" ||
     pathname == "/signup/register" ||
     pathname == "/signup/changepassword" ||
-    pathname == "/signup/sendcode"
+    pathname == "/signup/sendcode" ||
+    pathname == "/signup/login"
   ) {
     return <></>;
-    // commit pls
   }
   return (
     <div>
