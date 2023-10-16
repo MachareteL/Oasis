@@ -1,4 +1,4 @@
-import { BoschSansBlack, BoschSansBold } from "@/fonts/fonts";
+import { BoschSansBlack } from "@/fonts/fonts";
 import React from "react";
 
 export default function Oasis() {

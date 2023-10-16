@@ -3,10 +3,8 @@ import Message from "@/components/Message";
 import { PaperAirplaneIcon } from "@heroicons/react/24/outline";
 import type { NextPage } from "next";
 import { FormEvent, useEffect, useState } from "react";
-import { useRouter } from "next/router";
 import { useMutation } from "react-query";
 import { Iaxios } from "@/adapters/axios";
-import axios from "axios";
 
 const Page: NextPage = () => {
   // const { query } = useRouter();

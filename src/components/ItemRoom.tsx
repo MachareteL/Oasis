@@ -1,6 +1,6 @@
 import { BoschSansLight } from '@/fonts/fonts'
 import { XMarkIcon } from '@heroicons/react/24/outline'
-import React, { DetailedHTMLProps, InputHTMLAttributes, TextareaHTMLAttributes } from "react";
+import React, { DetailedHTMLProps, TextareaHTMLAttributes } from "react";
 
 export default function ItemRoom({
   title,
