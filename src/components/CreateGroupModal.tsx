@@ -14,7 +14,7 @@ import { useMutation } from "react-query";
 
 const MAX_COUNT = 10;
 
-interface FileObject {
+type FileObject = {
   name: string;
 }
 
@@ -24,7 +24,7 @@ export default function CreateRoomModal() {
     title: "",
     description: "",
     areas: "CaP/ETS",
-    members: ["lucas@login.com"],
+    members: [""],
   });
   function handleOpen() {
     setOpen(true);
@@ -38,9 +38,9 @@ export default function CreateRoomModal() {
   const [itemPeople, setItemPeople] = useState<FileObject[]>([]);
 
   const mutation = useMutation({
+    mutationKey: ["createGroup"],
     mutationFn: (newGroup: any) =>
-      Iaxios.post("/api/group/create", newGroup).then(({ data }) => data),
-  });
+      Iaxios.post("/api/group/create", newGroup).then(({ data }) => data)});
 
   function createRoom() {
     mutation.mutate(
@@ -51,7 +51,6 @@ export default function CreateRoomModal() {
       },
       {
         onSuccess: (data) => {
-          console.log({ data });
         },
       },
     );

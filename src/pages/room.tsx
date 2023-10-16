@@ -17,7 +17,7 @@ const Room = () => {
   const session = useSession({required: true, onUnauthenticated: ()=>{ push('/signup/login')}})
   const [rooms, setRooms] = useState<Room[]>([]);
   const { data, isSuccess } = useQuery({
-    queryKey: "fetchGroups",
+    queryKey: ["fetchGroups"],
     queryFn: () => Iaxios.get("/api/group/fetch").then(({ data }) => data),
     onSuccess: (data) => {
       setRooms(data);

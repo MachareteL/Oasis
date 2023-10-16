@@ -9,5 +9,8 @@ export default function handler(
   req: NextApiRequest,
   res: NextApiResponse<Data>
 ) {
+  console.log(typeof req.body);
+  const data = new FormData
+  
   res.status(200).json({ name: 'John Doe' })
-}
+} 
