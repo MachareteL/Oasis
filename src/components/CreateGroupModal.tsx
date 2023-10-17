@@ -16,7 +16,7 @@ const MAX_COUNT = 10;
 
 type FileObject = {
   name: string;
-}
+};
 
 export default function CreateRoomModal() {
   const [open, setOpen] = useState(false);
@@ -40,7 +40,8 @@ export default function CreateRoomModal() {
   const mutation = useMutation({
     mutationKey: ["createGroup"],
     mutationFn: (newGroup: any) =>
-      Iaxios.post("/api/group/create", newGroup).then(({ data }) => data)});
+      Iaxios.post("/api/group/create", newGroup).then(({ data }) => data),
+  });
 
   function createRoom() {
     mutation.mutate(
@@ -50,8 +51,7 @@ export default function CreateRoomModal() {
         area: roomData.areas,
       },
       {
-        onSuccess: (data) => {
-        },
+        onSuccess: (data) => {},
       },
     );
   }
@@ -137,7 +137,7 @@ export default function CreateRoomModal() {
               }}
             />
             <div className="flex justify-between space-x-3">
-              <div className="w-2/5  space-y-2">
+              <div className="w-2/5 space-y-2">
                 <InputStandart
                   placeholder="Area"
                   onChange={({ target }) => {

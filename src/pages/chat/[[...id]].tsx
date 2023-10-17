@@ -67,7 +67,7 @@ const Page: NextPage = () => {
         </ul>
         <form
           onSubmit={handleSendQuestion}
-          className="flex space-x-6 border-t border-bosch-light-gray-200 pt-5 dark:border-bosch-dark-gray-300"
+          className="flex space-x-6 border-t border-bosch-light-gray-200 px-4 py-2 pt-5 dark:border-bosch-dark-gray-300 sm:px-0"
         >
           <InputStandard
             placeholder="Type here"
