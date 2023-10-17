@@ -51,7 +51,7 @@ const Room = () => {
       <div className="container mx-auto flex flex-col gap-4 px-2 sm:grid sm:grid-cols-2 xl:grid-cols-4">
         {rooms.length === 0 && (
           <span className="text-stone-400">
-            You're not in a group yet. Try creating one
+            You&apos;re not in a group yet. Try creating one
           </span>
         )}
         {rooms.map((group) => (

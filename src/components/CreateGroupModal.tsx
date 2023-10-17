@@ -11,7 +11,7 @@ import { useState, useEffect } from "react";
 import { Autocomplete, TextField } from "@mui/material";
 import { Iaxios } from "@/adapters/axios";
 import { useMutation } from "react-query";
-
+import { useRouter } from "next/router";
 const MAX_COUNT = 10;
 
 type FileObject = {
@@ -20,18 +20,21 @@ type FileObject = {
 
 export default function CreateRoomModal() {
   const [open, setOpen] = useState(false);
+  const { reload } = useRouter();
   const [roomData, setRoomData] = useState({
     title: "",
     description: "",
-    areas: "CaP/ETS",
+    areas: "",
     members: [""],
   });
+
   function handleOpen() {
     setOpen(true);
   }
   function handleClose() {
     setOpen(false);
   }
+
   const [uploadedFiles, setUploadedFiles] = useState<FileObject[]>([]);
   const [userList, setUserList] = useState([]);
   const [itemArea, setItemArea] = useState<FileObject[]>([]);
@@ -51,7 +54,9 @@ export default function CreateRoomModal() {
         area: roomData.areas,
       },
       {
-        onSuccess: (data) => {},
+        onSuccess: (data) => {
+          reload()
+        },
       },
     );
   }
