@@ -5,6 +5,7 @@ import type { NextPage } from "next";
 import { FormEvent, useEffect, useState } from "react";
 import { useMutation } from "react-query";
 import { Iaxios } from "@/adapters/axios";
+import axios from "axios";
 
 const Page: NextPage = () => {
   // const { query } = useRouter();
@@ -26,8 +27,10 @@ const Page: NextPage = () => {
         },
       ]);
       console.log({ msgCache });
-
-      return Iaxios.post("/gepete2", newMessage).then(({ data }) => data);
+      setCurrentMsg("");
+      return axios
+        .post("http://localhost:8000/gepete", newMessage)
+        .then(({ data }) => data);
     },
   });
 
@@ -50,7 +53,7 @@ const Page: NextPage = () => {
       { question: currentMsg },
       {
         // onSuccess: (data) => {
-        //   console.log("on success called");
+        //   setCurrentMsg("");
         // },
       },
     );
@@ -59,11 +62,11 @@ const Page: NextPage = () => {
   return (
     <>
       <div className="container mx-auto flex h-[90vh] flex-col justify-end overflow-hidden">
-        {/* <button onClick={marketing}>LOG</button> */}
         <ul className="">
           {msgCache?.map((message, index) => (
             <Message {...message} loading={isLoading} key={index} />
           ))}
+          {isLoading && <MessagePlaceholder />}
         </ul>
         <form
           onSubmit={handleSendQuestion}
@@ -77,7 +80,7 @@ const Page: NextPage = () => {
             value={currentMsg}
             disabled={isLoading}
           />
-          <button className="w-7" type="submit" disabled={true}>
+          <button className="w-7 cursor-pointer" type="submit" disabled={false}>
             <PaperAirplaneIcon className="text-bosch-dark-gray-200 hover:text-oasis-aqua-400 disabled:cursor-wait dark:text-bosch-dark-gray-200 dark:hover:text-oasis-aqua-300" />
           </button>
         </form>
@@ -87,3 +90,23 @@ const Page: NextPage = () => {
 };
 
 export default Page;
+
+function MessagePlaceholder() {
+  return (
+    <div className="w-full">
+      <div className="flex animate-pulse space-x-4">
+        <div className="h-10 w-10 rounded-full bg-slate-200"></div>
+        <div className="flex-1 space-y-6 py-1">
+          <div className="h-2 rounded bg-slate-200"></div>
+          <div className="space-y-3">
+            <div className="grid grid-cols-3">
+              <div className="col-span-2 h-2 rounded bg-slate-200"></div>
+              <div className="col-span-1 h-2 rounded bg-slate-200"></div>
+            </div>
+            <div className="h-2 rounded bg-slate-200" />
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+}
