@@ -21,11 +21,11 @@ type FileObject = {
 export default function CreateRoomModal() {
   const [open, setOpen] = useState(false);
   const { reload } = useRouter();
-  const [roomData, setRoomData] = useState({
+  const [roomData, setRoomData] = useState<Roomdata>({
     title: "",
     description: "",
-    areas: "",
-    members: [""],
+    areas: [],
+    members: [],
   });
 
   function handleOpen() {
@@ -55,7 +55,7 @@ export default function CreateRoomModal() {
       },
       {
         onSuccess: (data) => {
-          reload()
+          reload();
         },
       },
     );
@@ -146,13 +146,16 @@ export default function CreateRoomModal() {
                 <InputStandart
                   placeholder="Area"
                   onChange={({ target }) => {
-                    setRoomData({ ...roomData, areas: target.value });
+                    setRoomData({
+                      ...roomData,
+                      areas: [...roomData.areas, target.value],
+                    });
                   }}
                 />
                 <div className="flex flex-wrap">
-                  <ItemRoom title={"ETS"} />
-                  <ItemRoom title={"EXEMPLO"} />
-                  <ItemRoom title={"DSO"} />
+                  {roomData.areas.map((area) => (
+                    <ItemRoom title={area} />
+                  ))}
                 </div>
                 <div className="max-h-28 overflow-y-scroll">
                   {itemArea.map((item) => (
@@ -161,23 +164,10 @@ export default function CreateRoomModal() {
                 </div>
               </div>
               <div className="w-3/5 space-y-2">
-                <Autocomplete
-                  disablePortal
-                  options={userList}
-                  renderInput={(params) => (
-                    <TextField
-                      {...params}
-                      placeholder="people"
-                      key={params.id}
-                    />
-                  )}
-                />
-                <div className="flex flex-wrap">
-                  <ItemRoom title={"raissa"} />
-                  <ItemRoom title={"lucas"} />
-                  <ItemRoom title={"gustavo"} />
-                  <ItemRoom title={"livea"} />
-                </div>
+                <span className="w-full rounded-md border-2 border-bosch-light-gray-300 py-2 text-bosch-black dark:text-bosch-dark-gray-200">
+                  asda123qsdfasva1$$32312f
+                </span>
+                {/* <div className="flex flex-wrap">copy to clipboard</div> */}
                 <div className="max-h-28 overflow-y-scroll">
                   {itemPeople.map((item, index) => (
                     <ItemRoom key={`itemRoom-${index}`} />

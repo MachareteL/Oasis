@@ -49,3 +49,10 @@ type Room = {
     members: number;
   };
 };
+
+type Roomdata = {
+  title: string;
+  description: string;
+  areas: string[];
+  members: string[];
+};
