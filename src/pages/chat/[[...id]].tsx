@@ -4,14 +4,14 @@ import { PaperAirplaneIcon } from "@heroicons/react/24/outline";
 import type { NextPage } from "next";
 import { FormEvent, useEffect, useState } from "react";
 import { useMutation } from "react-query";
-import { Iaxios } from "@/adapters/axios";
-import axios from "axios";
+import { Oaxios } from "@/adapters/axios";
+import { useRouter } from "next/router";
 
 const Page: NextPage = () => {
-  // const { query } = useRouter();
-  // useEffect(() => {
-  //   console.log(query);
-  // }, [query]);
+  const { query } = useRouter();
+  useEffect(() => {
+    console.log(query.id);
+  }, [query]);
 
   const [msgCache, setMsgCache] = useState<MessageProps[]>();
   const [currentMsg, setCurrentMsg] = useState("");
@@ -26,11 +26,8 @@ const Page: NextPage = () => {
           createdByCurrentUser: true,
         },
       ]);
-      console.log({ msgCache });
       setCurrentMsg("");
-      return axios
-        .post("http://localhost:8000/gepete", newMessage)
-        .then(({ data }) => data);
+      return Oaxios.post("/gepete", newMessage).then(({ data }) => data);
     },
   });
 
@@ -49,20 +46,14 @@ const Page: NextPage = () => {
 
   function handleSendQuestion(e: FormEvent) {
     e.preventDefault();
-    mutate(
-      { question: currentMsg },
-      {
-        // onSuccess: (data) => {
-        //   setCurrentMsg("");
-        // },
-      },
-    );
+    mutate({ question: currentMsg });
   }
 
   return (
     <>
+      <header className="absolute right-0 top-0 mt-8 pr-24">Group</header>
       <div className="container mx-auto flex h-[90vh] flex-col justify-end overflow-hidden">
-        <ul className="">
+        <ul>
           {msgCache?.map((message, index) => (
             <Message {...message} loading={isLoading} key={index} />
           ))}
@@ -80,8 +71,12 @@ const Page: NextPage = () => {
             value={currentMsg}
             disabled={isLoading}
           />
-          <button className="w-7 cursor-pointer" type="submit" disabled={false}>
-            <PaperAirplaneIcon className="text-bosch-dark-gray-200 hover:text-oasis-aqua-400 disabled:cursor-wait dark:text-bosch-dark-gray-200 dark:hover:text-oasis-aqua-300" />
+          <button
+            className="w-7 cursor-pointer text-bosch-dark-gray-200 hover:text-oasis-aqua-400 disabled:cursor-default disabled:hover:text-bosch-dark-gray-200 dark:text-bosch-dark-gray-200 dark:hover:text-oasis-aqua-300"
+            type="submit"
+            disabled={isLoading}
+          >
+            <PaperAirplaneIcon />
           </button>
         </form>
       </div>

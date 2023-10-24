@@ -153,9 +153,7 @@ export default function CreateRoomModal() {
                   }}
                 />
                 <div className="flex flex-wrap">
-                  {roomData.areas.map((area) => (
-                    <ItemRoom title={area} />
-                  ))}
+                  <ItemRoom title={"area"} />
                 </div>
                 <div className="max-h-28 overflow-y-scroll">
                   {itemArea.map((item) => (

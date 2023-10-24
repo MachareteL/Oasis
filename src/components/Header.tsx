@@ -20,7 +20,6 @@ export default function Header() {
   return (
     <div>
       <Menu />
-
       <Image
         src={BoschHeader}
         alt="hyperGraphic"
