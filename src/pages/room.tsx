@@ -3,7 +3,7 @@ import {
   BoschSansLight,
   BoschSansRegular,
 } from "@/fonts/fonts";
-import RoomCard from "@/components/Roomcard";
+import GroupCard from "@/components/GroupCard";
 import CreateRoomModal from "@/components/CreateGroupModal";
 import JoinRoomModal from "@/components/JoinRoomModal";
 import { Iaxios } from "@/adapters/axios";
@@ -55,7 +55,7 @@ const Room = () => {
           </span>
         )}
         {rooms.map((group) => (
-          <RoomCard
+          <GroupCard
             borderColorIndex={Math.floor(Math.random() * 15)}
             key={group.id}
             {...group}

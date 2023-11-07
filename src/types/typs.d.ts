@@ -25,7 +25,7 @@ type MessageProps = {
   createdByCurrentUser?: boolean;
 };
 
-type RoomCardProps = {
+type GroupCardProps = {
   id: string;
   name: string;
   description: string;

@@ -51,9 +51,8 @@ const Page: NextPage = () => {
 
   return (
     <>
-      <header className="absolute right-0 top-0 mt-8 pr-24">Group</header>
       <div className="container mx-auto flex h-[90vh] flex-col justify-end overflow-hidden">
-        <ul>
+        <ul className="space-y-2">
           {msgCache?.map((message, index) => (
             <Message {...message} loading={isLoading} key={index} />
           ))}
@@ -88,13 +87,17 @@ export default Page;
 
 function MessagePlaceholder() {
   return (
-    <div className="w-full">
+    <div className="w-full py-2">
       <div className="flex animate-pulse space-x-4">
         <div className="h-10 w-10 rounded-full bg-slate-200"></div>
-        <div className="flex-1 space-y-6 py-1">
-          <div className="h-2 rounded bg-slate-200"></div>
+        <div className="flex-1 space-y-3 py-1">
+          <div className="grid grid-cols-5 gap-1">
+            <div className="h-2 rounded bg-slate-200" />
+            <div className="col-span-3 h-2 rounded bg-slate-200" />
+            <div className="h-2 rounded bg-slate-200" />
+          </div>
           <div className="space-y-3">
-            <div className="grid grid-cols-3">
+            <div className="grid grid-cols-3 gap-1">
               <div className="col-span-2 h-2 rounded bg-slate-200"></div>
               <div className="col-span-1 h-2 rounded bg-slate-200"></div>
             </div>

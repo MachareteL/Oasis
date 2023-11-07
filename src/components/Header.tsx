@@ -2,21 +2,25 @@ import Image from "next/image";
 import React from "react";
 import BoschHeader from "../../public/bosch-supergraphic-oasis.svg";
 import BoschBlackLogo from "../../public/BoschBlack.svg";
-import { usePathname } from "next/navigation";
+import { useRouter } from "next/router";
 import Menu from "./Menu";
 import Link from "next/link";
+import GroupSettings from "./GroupSettings";
 
 export default function Header() {
-  const pathname = usePathname();
-  if (
-    pathname == "/signup" ||
-    pathname == "/signup/register" ||
-    pathname == "/signup/changepassword" ||
-    pathname == "/signup/sendcode" ||
-    pathname == "/signup/login"
-  ) {
-    return <></>;
+  const route = useRouter();
+  const allowedRoutes = [
+    "/signup",
+    "/signup/register",
+    "/signup/changepassword",
+    "/signup/sendcode",
+    "/signup/login",
+  ];
+  const { id } = route.query as { id: string };
+  if (allowedRoutes.includes(route.pathname)) {
+    return null;
   }
+
   return (
     <div>
       <Menu />
@@ -25,12 +29,12 @@ export default function Header() {
         alt="hyperGraphic"
         className="h-3 w-screen object-cover"
       />
-      <Link
-        href={"/"}
-        className="flex w-fit items-center justify-between pr-12"
-      >
-        <Image src={BoschBlackLogo} alt="Logo" className="dark:invert" />
-      </Link>
+      <div className="flex items-center justify-between pr-12">
+        <Link href={"/"}>
+          <Image src={BoschBlackLogo} alt="Logo" className="dark:invert" />
+        </Link>
+        {id && <GroupSettings id={id} />}
+      </div>
     </div>
   );
 }
