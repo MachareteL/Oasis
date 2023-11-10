@@ -6,71 +6,15 @@ import {
   PlusIcon,
   XMarkIcon,
 } from "@heroicons/react/24/outline";
-import ItemRoom from "./ItemRoom";
 import { useState, useEffect } from "react";
-import { Autocomplete, TextField, styled } from "@mui/material";
+import { Autocomplete, TextField, styled, AutocompleteGetTagProps } from "@mui/material";
 import { Iaxios } from "@/adapters/axios";
+import CustomizedHook from "./CustomizedHook";
 const MAX_COUNT = 10;
 
 interface FileObject {
   name: string;
 }
-
-let theme;
-
-if (typeof window !== "undefined") {
-  theme = window.matchMedia("(prefers-color-scheme: dark)").matches;
-}
-
-const AutoCompleteComponent = styled(Autocomplete)(
-  theme
-    ? {
-        "& label.Mui-focused": {
-          color: "#419E98",
-        },
-        "& .MuiInput-underline:after": {
-          borderBottomColor: "#7D8389",
-        },
-        "& .MuiOutlinedInput-root": {
-          "& fieldset": {
-            borderColor: "#7D8389",
-          },
-          "&:hover fieldset": {
-            borderColor: "#7D8389",
-          },
-          "&.Mui-focused fieldset": {
-            borderColor: "#419E98",
-          },
-          "& .MuiSvgIcon-root": {
-            color: "#7D8389",
-          },
-          "& .MuiPopper": {
-            backgroundColor: "#000",
-          },
-          color: "#ffffff",
-        },
-      }
-    : {
-        "& label.Mui-focused": {
-          color: "#18837E",
-        },
-        "& .MuiInput-underline:after": {
-          borderBottomColor: "#D0D4D8",
-        },
-        "& .MuiOutlinedInput-root": {
-          "& fieldset": {
-            borderColor: "#D0D4D8",
-          },
-          "&:hover fieldset": {
-            borderColor: "#D0D4D8",
-          },
-          "&.Mui-focused fieldset": {
-            borderColor: "#18837E",
-          },
-          color: "#000000",
-        },
-      },
-);
 
 export default function CreateRoomModal() {
   const [open, setOpen] = useState(false);
@@ -170,7 +114,7 @@ export default function CreateRoomModal() {
         className="flex items-center justify-center"
       >
         <div className="m-10 flex w-full max-w-2xl flex-col rounded-2xl bg-bosch-white px-8 py-5 dark:bg-bosch-dark-gray-500 sm:px-12 sm:py-8">
-          <p className={"text-lg font-bold"}>Create a New Group</p>
+          <p className={"text-xl font-bold text-bosch-light-gray-300 dark:text-bosch-dark-gray-200"}>Create a New Group</p>
           <h1 className="-mx-2 mb-5 mt-3 h-0.5 bg-bosch-light-gray-100 dark:bg-bosch-dark-gray-300" />
           <div className="space-y-5">
             <InputStandart
@@ -185,26 +129,8 @@ export default function CreateRoomModal() {
                 setRoomData({ ...roomData, description: target.value });
               }}
             />
-            <div className="flex justify-between gap-4 ">
-              <div className="w-2/5 space-y-2">
-                <AutoCompleteComponent
-                  disablePortal
-                  options={userList}
-                  renderInput={(params) => (
-                    <TextField {...params} label="Area" />
-                  )}
-                />
-              </div>
-              <div className="w-3/5 space-y-2">
-                <AutoCompleteComponent
-                  disablePortal
-                  options={userList}
-                  renderInput={(params) => (
-                    <TextField {...params} label="People" />
-                  )}
-                />
-              </div>
-            </div>
+                <CustomizedHook />
+            
             <div className="flex flex-col space-y-2">
               <div className="flex items-center justify-between text-bosch-light-gray-250 shadow-none ">
                 <label

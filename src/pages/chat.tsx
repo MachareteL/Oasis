@@ -51,7 +51,7 @@ const Page: NextPage = () => {
   }
   return (
     <>
-      <div className="container mx-auto flex h-[90vh] flex-col justify-end overflow-hidden">
+      <div className="container mx-auto flex h-[90vh] flex-col justify-end overflow-hidden ">
         {/* <button onClick={marketing}>LOG</button> */}
         <ul className="">
           {msgCache?.map((message, index) => (
@@ -60,7 +60,7 @@ const Page: NextPage = () => {
         </ul>
         <form
           onSubmit={handleSendQuestion}
-          className="flex space-x-6 border-t border-bosch-light-gray-200 pt-5 dark:border-bosch-dark-gray-300"
+          className="flex space-x-6 border-t border-bosch-light-gray-200 pt-5 dark:border-bosch-dark-gray-300 w-screen absolute left-0 px-8 sm:px-48"
         >
           <InputStandard
             placeholder="Type here"
