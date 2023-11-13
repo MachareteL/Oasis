@@ -26,3 +26,23 @@ body {
   text-orientation: upright;
   writing-mode: vertical-lr;
 }
+
+ul::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+ul::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* Handle */
+ul::-webkit-scrollbar-thumb {
+  background: #888;
+  border-radius: 5px;
+}
+
+/* Handle on hover */
+ul::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}

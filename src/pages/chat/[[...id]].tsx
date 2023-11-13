@@ -52,7 +52,7 @@ const Page: NextPage = () => {
   return (
     <>
       <div className="container mx-auto flex h-[90vh] flex-col justify-end overflow-hidden">
-        <ul className="space-y-2">
+        <ul className="space-y-2 overflow-y-scroll">
           {msgCache?.map((message, index) => (
             <Message {...message} loading={isLoading} key={index} />
           ))}
