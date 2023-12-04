@@ -53,6 +53,6 @@ type Room = {
 type Roomdata = {
   title: string;
   description: string;
-  areas: string[];
+  areas: string;
   members: string[];
 };

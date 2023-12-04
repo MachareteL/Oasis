@@ -24,7 +24,7 @@ export default function CreateRoomModal() {
   const [roomData, setRoomData] = useState<Roomdata>({
     title: "",
     description: "",
-    areas: [],
+    areas: "",
     members: [],
   });
 
@@ -95,6 +95,7 @@ export default function CreateRoomModal() {
     });
 
     if (!limitExceeded) setUploadedFiles(uploaded);
+    console.log("Uploaded files");
   };
 
   const handleFileEvent = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -103,6 +104,7 @@ export default function CreateRoomModal() {
       name: file.name,
     }));
     handleUploadFiles(fileObjects);
+    console.log(uploadedFiles);
   };
 
   const removeFiles = (file: FileObject) => {
@@ -148,13 +150,13 @@ export default function CreateRoomModal() {
                   onChange={({ target }) => {
                     setRoomData({
                       ...roomData,
-                      areas: [...roomData.areas, target.value],
+                      areas: target.value,
                     });
                   }}
                 />
-                <div className="flex flex-wrap">
+                {/* <div className="flex flex-wrap">
                   <ItemRoom title={"area"} />
-                </div>
+                </div> */}
                 <div className="max-h-28 overflow-y-scroll">
                   {itemArea.map((item) => (
                     <ItemRoom key={item.name} />
@@ -162,9 +164,9 @@ export default function CreateRoomModal() {
                 </div>
               </div>
               <div className="w-3/5 space-y-2">
-                <span className="w-full rounded-md border-2 border-bosch-light-gray-300 py-2 text-bosch-black dark:text-bosch-dark-gray-200">
+                {/* <span className="w-full rounded-md border-2 border-bosch-light-gray-300 py-2 text-bosch-black dark:text-bosch-dark-gray-200">
                   asda123qsdfasva1$$32312f
-                </span>
+                </span> */}
                 {/* <div className="flex flex-wrap">copy to clipboard</div> */}
                 <div className="max-h-28 overflow-y-scroll">
                   {itemPeople.map((item, index) => (
