@@ -103,6 +103,7 @@ export default function CreateRoomModal() {
       <Button
         onClick={handleOpen}
         className="absolute right-6 top-28 shadow-none"
+        id="createGroup_btn"
       >
         <PlusIcon className="w-9 hover:text-oasis-aqua-400 dark:hover:text-oasis-aqua-300" />
       </Button>
@@ -112,32 +113,34 @@ export default function CreateRoomModal() {
         aria-labelledby="modal-modal-title"
         aria-describedby="modal-modal-description"
         className="flex items-center justify-center"
+        id="createGroup_modal"
       >
         <div className="m-10 flex w-full max-w-2xl flex-col rounded-2xl bg-bosch-white px-8 py-5 dark:bg-bosch-dark-gray-500 sm:px-12 sm:py-8">
           <p className={"text-xl font-bold text-bosch-light-gray-300 dark:text-bosch-dark-gray-200"}>Create a New Group</p>
           <h1 className="-mx-2 mb-5 mt-3 h-0.5 bg-bosch-light-gray-100 dark:bg-bosch-dark-gray-300" />
           <div className="space-y-5">
             <InputStandart
+              id="createGroup_title"
               placeholder="Title"
               onChange={({ target }) => {
                 setRoomData({ ...roomData, title: target.value });
               }}
             />
             <InputStandart
+              id="createGroup_description"
               placeholder="Description"
               onChange={({ target }) => {
                 setRoomData({ ...roomData, description: target.value });
               }}
             />
                 <CustomizedHook />
-            
             <div className="flex flex-col space-y-2">
               <div className="flex items-center justify-between text-bosch-light-gray-250 shadow-none ">
                 <label
                   htmlFor="file"
                   className="flex cursor-pointer items-center space-x-2 rounded-md border border-bosch-light-gray-250 border-opacity-60 px-3 py-2 hover:bg-bosch-light-gray-100 dark:hover:bg-bosch-dark-gray-400"
                 >
-                  <ArrowDownTrayIcon className="mr-2 w-5" />
+                  <ArrowDownTrayIcon className="mr-2 w-5" id="ArrowDownTrayIcon_file" />
                   Add Files
                 </label>
                 <input
@@ -151,15 +154,16 @@ export default function CreateRoomModal() {
                 itens: {uploadedFiles.length}
               </div>
               <div className="max-h-28 overflow-y-scroll rounded-lg border border-bosch-light-gray-200 dark:border-bosch-dark-gray-300">
-                {uploadedFiles.map((file) => (
-                  <div className="flex justify-between border-b border-bosch-light-gray-200 px-2 pb-1 pt-2 text-sm hover:bg-bosch-light-gray-100   dark:border-bosch-dark-gray-300 dark:hover:bg-bosch-dark-gray-400">
+                {uploadedFiles.map((file, index) => (
+                  <div key={`Modal-key-${index}`} className="flex justify-between border-b border-bosch-light-gray-200 px-2 pb-1 pt-2 text-sm hover:bg-bosch-light-gray-100   dark:border-bosch-dark-gray-300 dark:hover:bg-bosch-dark-gray-400">
                     {file.name}
                     <button
+                      id="removeFiles_btn"
                       onClick={() => {
                         removeFiles(file);
                       }}
                     >
-                      <XMarkIcon className=" w-4 text-bosch-light-gray-300 hover:text-oasis-aqua-400 dark:hover:text-oasis-aqua-300" />
+                      <XMarkIcon className="w-4 text-bosch-light-gray-300 hover:text-oasis-aqua-400 dark:hover:text-oasis-aqua-300" />
                     </button>
                   </div>
                 ))}
@@ -168,12 +172,14 @@ export default function CreateRoomModal() {
           </div>
           <div className="flex justify-end space-x-3 pt-10">
             <Button
+              id="handleClose_btn"
               onClick={handleClose}
               className="border border-bosch-light-gray-200 text-bosch-light-gray-300 hover:bg-bosch-light-gray-100 dark:border-bosch-dark-gray-300   dark:hover:bg-bosch-dark-gray-400"
             >
               Cancel
             </Button>
-            <Button
+            <Button 
+              id="createRoom_btn"
               onClick={createRoom}
               className=" bg-oasis-aqua-400 text-bosch-white hover:bg-oasis-aqua-500"
             >
