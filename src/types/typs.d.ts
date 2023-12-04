@@ -56,3 +56,10 @@ type Roomdata = {
   areas: string;
   members: string[];
 };
+
+type Group = {
+  id: string;
+  name: string;
+  description: string;
+  code?: string;
+};
