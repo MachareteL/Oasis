@@ -45,7 +45,7 @@ const Room = () => {
         <p
           className={`text-2xl dark:text-bosch-dark-gray-200 ${BoschSansLight.className}`}
         >
-          Your Bosch Chat
+          Your IA Bosch Chat
         </p>
       </div>
       <div className="container mx-auto flex flex-col gap-4 px-2 sm:grid sm:grid-cols-2 xl:grid-cols-4">

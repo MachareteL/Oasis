@@ -1,6 +1,6 @@
 import { Fragment } from "react";
 import { Dialog, Transition } from "@headlessui/react";
-import { Iaxios } from "@/adapters/axios";
+import { Iaxios, Oaxios } from "@/adapters/axios";
 import { useRouter } from "next/router";
 export default function GroupSettingsModal({
   isOpen,
@@ -11,7 +11,7 @@ export default function GroupSettingsModal({
   closeModal: () => void;
   group: Group;
 }) {
-  const { reload } = useRouter();
+  const { reload, push } = useRouter();
   function generateInviteCode(id: string) {
     Iaxios.patch("/api/group/generatecode", { id })
       .then(({ data }) => {
@@ -21,9 +21,27 @@ export default function GroupSettingsModal({
         console.log(err);
       });
   }
+  function deleteGroup(id: string) {
+    Iaxios.delete("/api/group/delete", { params: { id } })
+      .then(({ data }) => {
+        console.log(data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+    Oaxios.delete("/delete-group", { params: { path: id } })
+      .then(({ data }) => {
+        console.log(data);
+        alert("deletado com sucesso!");
+        push("/");
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }
   return (
     <Transition appear show={isOpen} as={Fragment}>
-      <Dialog as="div" className="relative z-10 " onClose={closeModal}>
+      <Dialog as="div" className="relative z-10" onClose={closeModal}>
         <Transition.Child
           as={Fragment}
           enter="ease-out duration-300"
@@ -47,7 +65,7 @@ export default function GroupSettingsModal({
               leaveFrom="opacity-100 scale-100"
               leaveTo="opacity-0 scale-95"
             >
-              <Dialog.Panel className="w-full max-w-xl transform overflow-hidden rounded-2xl border p-6 text-left align-middle shadow-xl transition-all">
+              <Dialog.Panel className="w-full max-w-xl transform overflow-hidden rounded-2xl border bg-bosch-dark-gray-500 p-6 text-left align-middle shadow-xl transition-all">
                 <Dialog.Title as="h3" className="text-lg font-medium leading-6">
                   <b>Group code </b> {group.id}
                 </Dialog.Title>
@@ -78,10 +96,19 @@ export default function GroupSettingsModal({
                     </tr>
                   </tbody>
                 </table>
-                <div className="mt-4 flex justify-end">
+                <div className="mt-4 flex justify-between">
                   <button
                     type="button"
-                    className="rounded-md border border-transparent bg-blue-100 px-4 py-2 text-sm font-medium text-blue-900 hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
+                    className="rounded-md border border-transparent bg-red-300 px-4 py-2 text-sm font-medium text-red-900 hover:bg-red-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-red-500 focus-visible:ring-offset-2"
+                    onClick={() => {
+                      deleteGroup(group.id);
+                    }}
+                  >
+                    Excluir
+                  </button>
+                  <button
+                    type="button"
+                    className="rounded-md border border-transparent bg-oasis-standard-550 px-4 py-2 text-sm font-medium hover:bg-blue-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 focus-visible:ring-offset-2"
                     onClick={closeModal}
                   >
                     Confirmar

@@ -9,9 +9,10 @@ import {
 import ItemRoom from "./ItemRoom";
 import { useState, useEffect } from "react";
 import { Autocomplete, TextField } from "@mui/material";
-import { Iaxios } from "@/adapters/axios";
+import { Iaxios, Oaxios } from "@/adapters/axios";
 import { useMutation } from "react-query";
 import { useRouter } from "next/router";
+import axios from "axios";
 const MAX_COUNT = 10;
 
 type FileObject = {
@@ -24,7 +25,7 @@ export default function CreateRoomModal() {
   const [roomData, setRoomData] = useState<Roomdata>({
     title: "",
     description: "",
-    areas: "",
+    area: "",
     members: [],
   });
 
@@ -36,14 +37,20 @@ export default function CreateRoomModal() {
   }
 
   const [uploadedFiles, setUploadedFiles] = useState<FileObject[]>([]);
-  const [userList, setUserList] = useState([]);
-  const [itemArea, setItemArea] = useState<FileObject[]>([]);
-  const [itemPeople, setItemPeople] = useState<FileObject[]>([]);
+  const [selectedFiles, setSelectedFiles] = useState([] as File[]);
 
   const mutation = useMutation({
     mutationKey: ["createGroup"],
-    mutationFn: (newGroup: any) =>
-      Iaxios.post("/api/group/create", newGroup).then(({ data }) => data),
+    mutationFn: async (newGroup: any) => {
+      const data = await Iaxios.post("/api/group/create", newGroup);
+      selectedFiles.forEach(async (file, i) => {
+        const formData = new FormData();
+        formData.append(`file_path`, file, file.name);
+        let cb = await Oaxios.postForm("/upload", formData);
+        console.log({ cb });
+      });
+      return data;
+    },
   });
 
   function createRoom() {
@@ -51,55 +58,41 @@ export default function CreateRoomModal() {
       {
         name: roomData.title,
         description: roomData.description,
-        area: roomData.areas,
+        area: roomData.area,
       },
       {
         onSuccess: (data) => {
+          console.log("FUNCIONOU SUCESSOS");
+
           reload();
         },
       },
     );
   }
 
-  useEffect(() => {
-    Iaxios.get<{ users: { email: string; name: string }[] }>("/api/user/public")
-      .then(({ data }) => {
-        let users: any = [];
-        data.users.map(({ name }) => {
-          users.push({ label: name, value: name });
-        });
-        setUserList(users);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
-
   const handleUploadFiles = (files: FileObject[]) => {
     const uploaded: FileObject[] = [...uploadedFiles];
-    let limitExceeded = false;
 
     files.some((file) => {
       if (uploaded.findIndex((f) => f.name === file.name) === -1) {
         uploaded.push(file);
-
-        // if (uploaded.length === MAX_COUNT) setFileLimit(true);
-
-        // if (uploaded.length > MAX_COUNT) {
-        //   alert(`You can only add a maximum of ${MAX_COUNT} files`);
-        //   setFileLimit(false);
-        //   limitExceeded = true;
-        //   return true;
-        // }
       }
     });
 
-    if (!limitExceeded) setUploadedFiles(uploaded);
+    setUploadedFiles(uploaded);
     console.log("Uploaded files");
   };
 
   const handleFileEvent = (e: React.ChangeEvent<HTMLInputElement>) => {
     const chosenFiles = Array.from(e.target.files || []);
+    if (!e.target.files) {
+      return;
+    }
+    setSelectedFiles([
+      ...selectedFiles,
+      e.target.files[e.target.files.length - 1],
+    ]);
+
     const fileObjects = chosenFiles.map((file) => ({
       name: file.name,
     }));
@@ -150,29 +143,10 @@ export default function CreateRoomModal() {
                   onChange={({ target }) => {
                     setRoomData({
                       ...roomData,
-                      areas: target.value,
+                      area: target.value,
                     });
                   }}
                 />
-                {/* <div className="flex flex-wrap">
-                  <ItemRoom title={"area"} />
-                </div> */}
-                <div className="max-h-28 overflow-y-scroll">
-                  {itemArea.map((item) => (
-                    <ItemRoom key={item.name} />
-                  ))}
-                </div>
-              </div>
-              <div className="w-3/5 space-y-2">
-                {/* <span className="w-full rounded-md border-2 border-bosch-light-gray-300 py-2 text-bosch-black dark:text-bosch-dark-gray-200">
-                  asda123qsdfasva1$$32312f
-                </span> */}
-                {/* <div className="flex flex-wrap">copy to clipboard</div> */}
-                <div className="max-h-28 overflow-y-scroll">
-                  {itemPeople.map((item, index) => (
-                    <ItemRoom key={`itemRoom-${index}`} />
-                  ))}
-                </div>
               </div>
             </div>
             <div className="flex flex-col space-y-2">
@@ -192,7 +166,7 @@ export default function CreateRoomModal() {
                   onChange={handleFileEvent}
                   className="hidden"
                 ></input>
-                itens: {uploadedFiles.length}
+                items: {uploadedFiles.length}
               </div>
               <div className="max-h-28 overflow-y-scroll rounded-lg border border-bosch-light-gray-200 dark:border-bosch-dark-gray-300">
                 {uploadedFiles.map((file) => (

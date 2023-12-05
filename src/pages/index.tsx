@@ -22,7 +22,7 @@ const Home: NextPage = () => {
         <p
           className={`text-2xl dark:text-bosch-dark-gray-200 ${BoschSansLight.className}`}
         >
-          Your Bosch Chat
+          Your IA Bosch Chat
         </p>
       </div>
 
