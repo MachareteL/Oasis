@@ -57,10 +57,10 @@ const Register: NextPage = () => {
                 <InputStandart placeholder="E-mail" name="email" required={true} onChange={({target})=>{setUser({...user, email: target.value})}}/>
               </div>
               <div>
-                <InputStandart placeholder="Password" name="password" required={true} onChange={({target})=>{setUser({...user, password: target.value})}}/>
+                <InputStandart placeholder="Password" name="password" required={true} onChange={({target})=>{setUser({...user, password: target.value})}} type="password"/>
               </div>
               <div>
-                <InputStandart placeholder="Confirm Password" name="confirmPassword" required={true} onChange={({target})=>{setUser({...user, confirmPassword: target.value})}}/>
+                <InputStandart placeholder="Confirm Password" name="confirmPassword" required={true} onChange={({target})=>{setUser({...user, confirmPassword: target.value})}} type="password"/>
                 <span className="flex justify-end space-x-1 pt-2 text-bosch-dark-gray-200">
                   <p>Already have an account?</p>
                   <Link href={"/signup"} className="text-oasis-standard-200">

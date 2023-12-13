@@ -9,7 +9,6 @@ import Oasis from "@/components/Oasis";
 import Link from "next/link";
 import { BoschSansLight, BoschSansMedium } from "@/fonts/fonts";
 
-
 const Login: NextPage = () => {
   const { data, status } = useSession();
   console.log(data, status);
@@ -20,8 +19,8 @@ const Login: NextPage = () => {
     signIn("credentials", {
       email: user.email,
       password: user.password,
-      callbackUrl: '/'
-    })
+      callbackUrl: "/",
+    });
   }
 
   return (
@@ -37,7 +36,9 @@ const Login: NextPage = () => {
         <div className="z-10 flex h-fit w-full flex-col space-y-12 rounded-2xl bg-bosch-white px-20 py-24 opacity-90 dark:bg-bosch-dark-gray-400 md:ml-auto md:mt-0 md:w-2/3 lg:w-2/4 xl:w-5/12">
           <div className="flex flex-col">
             <Oasis />
-            <h1 className={`flex justify-center text-xl sm:text-2xl ${BoschSansLight.className}`}>
+            <h1
+              className={`flex justify-center text-xl sm:text-2xl ${BoschSansLight.className}`}
+            >
               Sign In
             </h1>
           </div>
@@ -58,13 +59,14 @@ const Login: NextPage = () => {
               />
               <div className="space-y-1">
                 <InputStandart
+                  type="password"
                   placeholder="Password"
                   name="password"
                   onChange={(event) => {
                     setUser({ ...user, password: event.target.value });
                   }}
                 />
-                <span className="flex justify-end text-sm text-bosch-dark-gray-200 opacity-80 hover:opacity-100 hover:text-oasis-aqua-300">
+                <span className="flex justify-end text-sm text-bosch-dark-gray-200 opacity-80 hover:text-oasis-aqua-300 hover:opacity-100">
                   <Link href={"/signup/sendcode"}>Forgot password?</Link>
                 </span>
               </div>
